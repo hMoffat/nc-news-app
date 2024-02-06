@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function ArticleManager() {
   const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchArticles().then((response) => {
@@ -15,27 +15,27 @@ export default function ArticleManager() {
   }, []);
 
   return (
-    <div className="articles">
-      <ul>
-        {isLoading ? (
-          <li>
-            <p>Loading...</p>
-          </li>
-        ) : (
-          articles.map((article) => {
-            return (
-              <li key={article.article_id}>
-                <Link
-                  to={`/topics/${article.topic}/${article.title}`}
-                  state={article.article_id}
-                >
-                  <ArticleCard article={article} />
-                </Link>
-              </li>
-            );
-          })
-        )}
-      </ul>
-    </div>
+    <>
+      {isLoading ? (
+        <p className="loading">Loading...</p>
+      ) : (
+        <div className="articles">
+          <ul>
+            {articles.map((article) => {
+              return (
+                <li key={article.article_id}>
+                  <Link
+                    to={`/topics/${article.topic}/${article.title}`}
+                    state={article.article_id}
+                  >
+                    <ArticleCard article={article} />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}{" "}
+    </>
   );
 }

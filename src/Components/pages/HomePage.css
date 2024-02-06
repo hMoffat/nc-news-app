@@ -15,6 +15,12 @@
     "articles";
 }
 
+.loading {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+}
+
 .filter {
   grid-area: filter;
 }
