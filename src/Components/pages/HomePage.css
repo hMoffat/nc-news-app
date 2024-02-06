@@ -37,8 +37,17 @@
   height: auto;
 }
 
+.articles a {
+  text-decoration: inherit;
+}
+
 ul {
   list-style-type: none;
+}
+
+li {
+  margin-bottom: 40px;
+  border-bottom: 2px var(--light-accent) solid;
 }
 
 @media (min-width: 480px) {
