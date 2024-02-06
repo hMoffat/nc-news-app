@@ -9,41 +9,42 @@ import CommentsManager from "../Managers/CommentsManager";
 export default function ArticlePage() {
   const [article, setArticle] = useState({});
   const { state } = useLocation();
-  const [isLoading, setIsLoading] = useState({
-    articles: true,
-    comments: true,
-  });
+  const [articleIsLoading, setArticleIsLoading] = useState(true);
+  const [commentsAreLoading, setCommentsAreLoading] = useState(true);
   const [articleComments, setArticleComments] = useState([]);
 
   useEffect(() => {
     fetchArticleById(state).then((response) => {
       setArticle(response.data.article);
-      setIsLoading((currVal) => {
-        const copy = { ...currVal };
-        copy.articles = false;
-      });
+      setArticleIsLoading(false);
     });
   }, []);
 
   useEffect(() => {
     fetchCommentsByArticleId(state).then((response) => {
       setArticleComments(response.data.comments);
-      setIsLoading({ ...isLoading, comments: false });
+      setCommentsAreLoading(false);
     });
   }, []);
 
   return (
     <div className="article-page page layout">
-      {isLoading ? (
+      {articleIsLoading ? (
         <p className="article">Loading...</p>
       ) : (
         <>
           <ArticleCard article={article} />
-          <AddComment setArticleComments={setArticleComments} />
-          <CommentsManager
-            articleComments={articleComments}
-            setArticleComments={setArticleComments}
-          />
+          {commentsAreLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <>
+              <AddComment setArticleComments={setArticleComments} />
+              <CommentsManager
+                articleComments={articleComments}
+                setArticleComments={setArticleComments}
+              />
+            </>
+          )}
         </>
       )}
     </div>
