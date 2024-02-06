@@ -6,10 +6,8 @@ export default function ArticleManager() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    console.log("active!");
     fetchArticles()
       .then((response) => {
-        console.log("active");
         setArticles(response.data.articles);
       })
       .catch((err) => {
@@ -17,11 +15,8 @@ export default function ArticleManager() {
       });
   }, []);
 
-  console.log(articles);
-
   return (
-    <>
-      <h2>ArticleManager Component Placeholder</h2>
+    <div className="articles">
       <ul>
         {articles.map((article) => {
           return (
@@ -31,6 +26,6 @@ export default function ArticleManager() {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 }

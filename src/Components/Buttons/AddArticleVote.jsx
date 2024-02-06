@@ -1,3 +1,7 @@
-export default function AddArticleVote() {
-  return <h4>AddArticleVote Component Placeholder</h4>;
+export default function AddArticleVote({ currentVotes }) {
+  return (
+    <div className="add-votes">
+      <p>Votes (Placeholder): {currentVotes}</p>
+    </div>
+  );
 }

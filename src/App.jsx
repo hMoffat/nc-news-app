@@ -17,21 +17,26 @@ function App() {
   });
 
   return (
-    <>
-      <h1>App component</h1>
+    <div className="app layout">
       <UserContext.Provider value={{ loggedInUser }}>
-        <NavBar />
+        <NavBar className="nav-bar" />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage className="home-page page" />} />
           <Route
             path="/topics/:topic/:article_title"
-            element={<ArticlePage />}
+            element={<ArticlePage className="article-page page" />}
           />
-          <Route path="/topics/:topic" element={<TopicPage />} />
-          <Route path="/:user_name" element={<UserPage />} />
+          <Route
+            path="/topics/:topic"
+            element={<TopicPage className="topic-page page" />}
+          />
+          <Route
+            path="/:user_name"
+            element={<UserPage className="user-page page" />}
+          />
         </Routes>
       </UserContext.Provider>
-    </>
+    </div>
   );
 }
 

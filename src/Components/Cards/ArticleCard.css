@@ -1,0 +1,42 @@
+.article-card {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  grid-template-areas:
+    "header"
+    "title"
+    "img"
+    "footer";
+}
+
+.card-header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-title {
+  grid-area: title;
+}
+
+.card-img {
+  grid-area: img;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  grid-area: footer;
+}
+
+@media (min-width: 480px) {
+  .article-card {
+    max-width: 200px;
+  }
+
+  img {
+    max-width: 200px;
+    height: auto;
+  }
+}
