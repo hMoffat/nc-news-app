@@ -1,3 +1,2 @@
 - loading behaviour
-- add comments form - just placeholder atm
-- comments manager and comments card - just placeholder atm
+- Comments

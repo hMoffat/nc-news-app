@@ -16,6 +16,15 @@
   grid-area: header;
   display: flex;
   justify-content: space-between;
+  padding-top: 20px;
+}
+
+.card-header a {
+  background-color: var(--main-accent);
+  padding: 5px 10px;
+  border-radius: 20%;
+  color: white;
+  text-decoration: none;
 }
 
 .card-title {
@@ -34,7 +43,7 @@
   margin-bottom: 10px;
 }
 
-.card-footer {
+.article.card-footer {
   display: flex;
   justify-content: space-between;
   grid-area: footer;

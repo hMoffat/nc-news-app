@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import AddArticleVote from "../Buttons/AddArticleVote";
 import "../Cards/ArticleCard.css";
+import { shortStringDate } from "../../../Utils/utils";
 
 export default function ArticleCard({ article }) {
   const {
@@ -15,7 +16,7 @@ export default function ArticleCard({ article }) {
     created_at,
   } = article;
 
-  const createdDate = new Date(created_at).toString();
+  const date = shortStringDate(created_at);
 
   return (
     <div className="article-card">
@@ -40,8 +41,8 @@ export default function ArticleCard({ article }) {
           })}
         </div>
       ) : null}
-      <div className="card-footer">
-        <p>{createdDate}</p>
+      <div className="article card-footer">
+        <p>{date}</p>
         <AddArticleVote currentVotes={votes} />
         <p>Comment Count: {comment_count}</p>
       </div>
