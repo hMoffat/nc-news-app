@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.home-page.layout {
+  height: auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "filter"
+    "articles";
+}
+
+.filter {
+  grid-area: filter;
+}
+
+.filter * {
+  background-color: var(--light-accent);
+}
+
+.articles {
+  overflow: auto;
+  grid-area: articles;
+  width: 90vw;
+  justify-self: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.articles img {
+  max-width: 90vw;
+  height: auto;
+}
+
+ul {
+  list-style-type: none;
+}
+
+@media (min-width: 480px) {
+}
