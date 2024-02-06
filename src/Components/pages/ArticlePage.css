@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.article-page.layout {
+  height: auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+    "article"
+    "add-comment"
+    "comments";
+  margin-top: 20px;
+}
+
+.article-card {
+  grid-area: article;
+  width: 90vw;
+  justify-self: center;
+}
+
+.add-comment {
+  grid-area: add-comment;
+  width: 85vw;
+  justify-self: center;
+  background-color: var(--dark-accent);
+  color: var(--light-shade);
+  padding: 10px;
+}
+
+.add-comment * {
+  background-color: var(--dark-accent);
+  color: var(--light-shade);
+}
+
+.comments {
+  grid-area: comments;
+  width: 85vw;
+  justify-self: center;
+}
+
+.article-card img {
+  max-width: 90vw;
+  height: auto;
+}

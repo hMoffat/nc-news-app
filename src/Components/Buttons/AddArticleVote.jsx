@@ -1,7 +1,7 @@
 export default function AddArticleVote({ currentVotes }) {
   return (
     <div className="add-votes">
-      <p>Votes (Placeholder): {currentVotes}</p>
+      <p>Votes: {currentVotes}</p>
     </div>
   );
 }
