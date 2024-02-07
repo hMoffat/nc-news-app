@@ -1,0 +1,23 @@
+.add-vote {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--dark-accent);
+  border-radius: 7%;
+  margin-left: 0;
+  width: 140px;
+  font-weight: 600;
+  padding: 2px 0;
+}
+
+.add-vote p {
+  background-color: var(--dark-accent);
+  color: var(--light-shade);
+}
+
+.add-vote button {
+  padding: 5px 10px;
+  background-color: var(--light-shade);
+  border: solid 1px var(--dark-accent);
+  border-radius: 5%;
+}

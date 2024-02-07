@@ -8,10 +8,15 @@ export default function ArticleManager() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchArticles().then((response) => {
-      setArticles(response.data.articles);
-      setIsLoading(false);
-    });
+    fetchArticles()
+      .then((response) => {
+        setArticles(response.data.articles);
+
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log("fetch articles err: ", err);
+      });
   }, []);
 
   return (
@@ -24,18 +29,13 @@ export default function ArticleManager() {
             {articles.map((article) => {
               return (
                 <li key={article.article_id}>
-                  <Link
-                    to={`/topics/${article.topic}/${article.title}`}
-                    state={article.article_id}
-                  >
-                    <ArticleCard article={article} />
-                  </Link>
+                  <ArticleCard article={article} />
                 </li>
               );
             })}
           </ul>
         </div>
-      )}{" "}
+      )}
     </>
   );
 }

@@ -43,6 +43,8 @@
   grid-area: comments;
   width: 85vw;
   justify-self: center;
+  /* border: 1px solid var(--dark-accent); */
+  padding: 1rem;
 }
 
 .article-card img {
