@@ -12,7 +12,7 @@ export default function AddArticleVote({
   const [serverErr, setServerErr] = useState(false);
 
   const handleVotes = (num) => {
-    if (!voted) {
+    if (!voted && !serverErr) {
       setVotes(votes + num);
       setVoted(true);
 
