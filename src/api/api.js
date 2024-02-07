@@ -21,3 +21,7 @@ export const addVotesByArticleId = (article_id, votes) => {
 export const addVotesByCommentId = (comment_id, votes) => {
   return ncNewsApi.patch(`/comments/${comment_id}`, { inc_votes: votes });
 };
+
+export const addComment = (article_id, data) => {
+  return ncNewsApi.post(`articles/${article_id}/comments`, data);
+};

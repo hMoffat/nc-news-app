@@ -30,7 +30,7 @@ export default function ArticleCard({ article }) {
 
       <div className="card-header">
         <h4>
-          {body ? <Link to={`/topics/${topic}`}>{topic}</Link> : <p>{topic}</p>}
+          <Link to={`/topics/${topic}`}>{topic}</Link>
         </h4>
         <h4>{author}</h4>
       </div>
