@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import AddArticleVote from "../Buttons/AddArticleVote";
+import AddVote from "../Buttons/AddVote";
 import "../Cards/ArticleCard.css";
 import { shortStringDate } from "../../../Utils/utils";
 
@@ -20,19 +20,35 @@ export default function ArticleCard({ article }) {
 
   return (
     <div className="article-card">
-      <h3 className="card-title">{title}</h3>
+      {body ? (
+        <h3 className="card-title">{title}</h3>
+      ) : (
+        <Link to={`/topics/${topic}/${title}`} state={article_id}>
+          <h3 className="card-title">{title}</h3>
+        </Link>
+      )}
+
       <div className="card-header">
         <h4>
           {body ? <Link to={`/topics/${topic}`}>{topic}</Link> : <p>{topic}</p>}
         </h4>
         <h4>{author}</h4>
       </div>
-
-      <img
-        src={article_img_url}
-        alt={`image for article '${title}'`}
-        className="card-img"
-      />
+      {body ? (
+        <img
+          src={article_img_url}
+          alt={`image for article '${title}'`}
+          className="card-img"
+        />
+      ) : (
+        <Link to={`/topics/${topic}/${title}`} state={article_id}>
+          <img
+            src={article_img_url}
+            alt={`image for article '${title}'`}
+            className="card-img"
+          />
+        </Link>
+      )}
       {body ? (
         <div className="card-body">
           {body.split(".").map((sentence) => {
@@ -43,7 +59,7 @@ export default function ArticleCard({ article }) {
       ) : null}
       <div className="article card-footer">
         <p>{date}</p>
-        <AddArticleVote currentVotes={votes} />
+        <AddVote currentVotes={votes} article_id={article_id} />
         <p>Comment Count: {comment_count}</p>
       </div>
     </div>

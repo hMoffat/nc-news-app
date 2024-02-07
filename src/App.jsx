@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="app layout">
-      <UserContext.Provider value={{ loggedInUser }}>
+      <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
         <NavBar className="nav-bar" />
         <Routes>
           <Route path="/" element={<HomePage className="home-page page" />} />

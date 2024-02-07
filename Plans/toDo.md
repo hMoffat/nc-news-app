@@ -1,2 +1,2 @@
 - loading behaviour
-- Comments
+- Comment likes

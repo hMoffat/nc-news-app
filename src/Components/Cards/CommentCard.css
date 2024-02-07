@@ -24,3 +24,7 @@
   display: flex;
   justify-content: end;
 }
+
+.comment.card-footer * {
+  margin-left: 10px;
+}
