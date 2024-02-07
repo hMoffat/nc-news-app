@@ -9,6 +9,7 @@ export default function AddArticleVote({
 }) {
   const [votes, setVotes] = useState(currentVotes);
   const [voted, setVoted] = useState(false);
+  const [serverErr, setServerErr] = useState(false);
 
   const handleVotes = (num) => {
     if (!voted) {
@@ -16,14 +17,28 @@ export default function AddArticleVote({
       setVoted(true);
 
       if (article_id) {
-        addVotesByArticleId(article_id, num).then((response) => {
-          console.log(response);
-        });
+        addVotesByArticleId(article_id, num)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((err) => {
+            setVotes(votes - num);
+
+            setVoted(false);
+            setServerErr(true);
+          });
       }
       if (comment_id) {
-        addVotesByCommentId(comment_id, num).then((response) => {
-          console.log(response);
-        });
+        addVotesByCommentId(comment_id, num)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((err) => {
+            setVotes(votes - num);
+
+            setVoted(false);
+            setServerErr(true);
+          });
       }
     }
   };
@@ -49,6 +64,7 @@ export default function AddArticleVote({
         {" "}
         💔{" "}
       </button>
+      {serverErr ? <p>Sorry, something went wrong!</p> : null}
     </div>
   );
 }
