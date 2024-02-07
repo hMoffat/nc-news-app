@@ -38,7 +38,10 @@ export default function ArticlePage() {
             <p>Loading...</p>
           ) : (
             <>
-              <AddComment setArticleComments={setArticleComments} />
+              <AddComment
+                setArticleComments={setArticleComments}
+                article_id={article.article_id}
+              />
               <CommentsManager
                 articleComments={articleComments}
                 setArticleComments={setArticleComments}

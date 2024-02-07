@@ -1,7 +1,70 @@
-export default function AddComment({ setArticleComments }) {
+import UserContext from "../UserContext";
+import { useContext, useState } from "react";
+import { addComment } from "../../api/api";
+import "./AddComment.css";
+
+export default function AddComment({ setArticleComments, article_id }) {
+  const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+  const [commentInput, setCommentInput] = useState({
+    username: loggedInUser.username,
+    body: "",
+  });
+  const [err, setErr] = useState(null);
+
+  const handleChange = (event) => {
+    setCommentInput((currVal) => {
+      const copy = { ...currVal };
+      copy.body = event.target.value;
+      return copy;
+    });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    addComment(article_id, commentInput)
+      .then((response) => {
+        const postedComment = response.data.postedComment;
+
+        setCommentInput((currVal) => {
+          const copy = { ...currVal };
+          copy.body = "";
+          return copy;
+        });
+        setLoggedInUser((currVal) => {
+          const copy = { ...currVal };
+          const commentsCopy = [...copy.comments, postedComment];
+          copy.comments = commentsCopy;
+          return copy;
+        });
+
+        setArticleComments((currVal) => {
+          const copy = [...currVal, postedComment];
+          return copy;
+        });
+      })
+      .catch((err) => {
+        console.log("add comment err: ", err);
+        setErr("Sorry, we couldn't post your comment...");
+      });
+  };
+
   return (
     <div className="add-comment">
-      <h4>AddComment placeholder</h4>
+      {" "}
+      {err ? (
+        <p>{err}</p>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="body">Add a Comment</label>
+          <textarea
+            value={commentInput.body}
+            onChange={handleChange}
+            rows={4}
+            cols={40}
+          />
+          <button type="submit">Add comment</button>
+        </form>
+      )}
     </div>
   );
 }

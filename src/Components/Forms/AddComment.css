@@ -1,0 +1,25 @@
+.add-comment * {
+  font-weight: 600;
+}
+
+.add-comment textarea {
+  border: 1px var(--light-shade) solid;
+  box-shadow: none;
+}
+
+.add-comment button {
+  border-radius: 4px;
+  border: 1px solid var(--light-shade);
+  padding: 6px 15px;
+  text-decoration: none;
+  background-color: var(--light-shade);
+  color: var(--dark-shade);
+  width: fit-content;
+}
+
+.add-comment form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 130px;
+}

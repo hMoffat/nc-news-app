@@ -57,10 +57,15 @@
   margin-bottom: 30px;
 }
 
+.comments ul {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 @media (min-width: 480px) {
-  ul {
+  .comments ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     flex-wrap: nowrap;
     justify-content: space-between;
   }
