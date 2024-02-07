@@ -23,5 +23,9 @@ export const addVotesByCommentId = (comment_id, votes) => {
 };
 
 export const addComment = (article_id, data) => {
-  return ncNewsApi.post(`articles/${article_id}/comments`, data);
+  return ncNewsApi.post(`/articles/${article_id}/comments`, data);
+};
+
+export const deleteComment = (comment_id) => {
+  return ncNewsApi.delete(`/comments/${comment_id}`);
 };

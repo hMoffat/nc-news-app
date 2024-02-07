@@ -4,6 +4,11 @@
   margin: 0;
 }
 
+.page {
+  overflow: auto;
+  grid-area: main;
+}
+
 .article-page.layout {
   height: auto;
 
