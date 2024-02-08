@@ -16,20 +16,36 @@ function App() {
       "https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729",
     comments: [],
   });
+  const [topics, setTopics] = useState([]);
 
   return (
     <div className="app layout">
       <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
         <NavBar className="nav-bar" />
         <Routes>
-          <Route path="/" element={<HomePage className="home-page page" />} />
+          <Route
+            path="/"
+            element={
+              <HomePage
+                className="home-page page"
+                topics={topics}
+                setTopics={setTopics}
+              />
+            }
+          />
           <Route
             path="/topics/:topic/:article_title"
             element={<ArticlePage className="article-page page" />}
           />
           <Route
             path="/topics/:topic"
-            element={<TopicPage className="topic-page page" />}
+            element={
+              <TopicPage
+                className="topic-page page"
+                topics={topics}
+                setTopics={setTopics}
+              />
+            }
           />
           <Route
             path="/:username"

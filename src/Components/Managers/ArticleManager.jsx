@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../Cards/ArticleCard";
 import { fetchArticles } from "../../api/api";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function ArticleManager() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { topic } = useParams();
 
   useEffect(() => {
-    fetchArticles()
+    fetchArticles(topic)
       .then((response) => {
         setArticles(response.data.articles);
 
@@ -17,7 +18,7 @@ export default function ArticleManager() {
       .catch((err) => {
         console.log("fetch articles err: ", err);
       });
-  }, []);
+  }, [topic]);
 
   return (
     <>

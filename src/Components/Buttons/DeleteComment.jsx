@@ -1,11 +1,15 @@
 import { deleteComment } from "../../api/api";
 import UserContext from "../UserContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function DeleteComment({ setArticleComments, comment_id }) {
   const { setLoggedInUser } = useContext(UserContext);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [deleteing, setDeleteing] = useState(false);
 
   const handleDelete = (event) => {
+    setIsDisabled(true);
+    setDeleteing(true);
     setLoggedInUser((currVal) => {
       const copy = { ...currVal };
 
@@ -26,8 +30,22 @@ export default function DeleteComment({ setArticleComments, comment_id }) {
           return filteredCopy;
         });
       }
+      setIsDisabled(false);
+      setDeleteing(false);
     });
   };
 
-  return <button onClick={handleDelete}>Delete Comment</button>;
+  return (
+    <>
+      {deleteing ? (
+        <button onClick={handleDelete} disabled={isDisabled}>
+          Deleteing...
+        </button>
+      ) : (
+        <button onClick={handleDelete} disabled={isDisabled}>
+          Delete Comment
+        </button>
+      )}
+    </>
+  );
 }
