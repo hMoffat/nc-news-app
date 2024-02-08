@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./Components/NavBar";
@@ -32,7 +32,7 @@ function App() {
             element={<TopicPage className="topic-page page" />}
           />
           <Route
-            path="/:user_name"
+            path="/:username"
             element={<UserPage className="user-page page" />}
           />
         </Routes>

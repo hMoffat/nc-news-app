@@ -1,0 +1,31 @@
+.user-page.layout {
+  height: auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "user"
+    "comments";
+  margin-top: 20px;
+}
+
+.user-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-card {
+  grid-area: user;
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  padding: 2rem;
+  height: 400px;
+  justify-content: space-around;
+}
+
+.comments {
+  grid-area: comments;
+}
