@@ -10,6 +10,8 @@ export default function AddComment({ setArticleComments, article_id }) {
     body: "",
   });
   const [err, setErr] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [posting, setPosting] = useState(false);
 
   const handleChange = (event) => {
     setCommentInput((currVal) => {
@@ -20,6 +22,8 @@ export default function AddComment({ setArticleComments, article_id }) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsDisabled(true);
+    setPosting(true);
 
     addComment(article_id, commentInput)
       .then((response) => {
@@ -41,6 +45,9 @@ export default function AddComment({ setArticleComments, article_id }) {
           const copy = [...currVal, postedComment];
           return copy;
         });
+
+        setIsDisabled(false);
+        setPosting(false);
       })
       .catch((err) => {
         console.log("add comment err: ", err);
@@ -50,9 +57,10 @@ export default function AddComment({ setArticleComments, article_id }) {
 
   return (
     <div className="add-comment">
-      {" "}
       {err ? (
         <p>{err}</p>
+      ) : posting ? (
+        <p>Posting your comment...</p>
       ) : (
         <form onSubmit={handleSubmit}>
           <label htmlFor="body">Add a Comment</label>
@@ -62,7 +70,9 @@ export default function AddComment({ setArticleComments, article_id }) {
             rows={4}
             cols={40}
           />
-          <button type="submit">Add comment</button>
+          <button type="submit" disabled={isDisabled}>
+            Add comment
+          </button>
         </form>
       )}
     </div>

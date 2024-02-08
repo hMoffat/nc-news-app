@@ -62,7 +62,7 @@ export default function AddArticleVote({
         aria-label="Dislike"
       >
         {" "}
-        💔{" "}
+        👎{" "}
       </button>
       {serverErr ? <p>Sorry, something went wrong!</p> : null}
     </div>

@@ -1,7 +1,12 @@
 - loading behaviour
 - Comment likes
+  -update state tree
 
 - add user context to AddVote button to check a user is logged in
 - add comment - enter key not submitting
 - would be nice to have user's avatar by their comment
 - double check feedbacks
+- disable buttons - got to topic, like dislike, addcomment, delete comment
+- refactor css system
+- set up user page for other users
+- make usernames in article cards links
