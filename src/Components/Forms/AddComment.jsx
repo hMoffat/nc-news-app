@@ -12,6 +12,7 @@ export default function AddComment({ setArticleComments, article_id }) {
   const [err, setErr] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
   const [posting, setPosting] = useState(false);
+  const [noBody, setNoBody] = useState(false);
 
   const handleChange = (event) => {
     setCommentInput((currVal) => {
@@ -22,43 +23,53 @@ export default function AddComment({ setArticleComments, article_id }) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsDisabled(true);
-    setPosting(true);
 
-    addComment(article_id, commentInput)
-      .then((response) => {
-        const postedComment = response.data.postedComment;
+    if (commentInput.body === "") {
+      setIsDisabled(false);
+      setNoBody(true);
+    } else {
+      setNoBody(false);
 
-        setCommentInput((currVal) => {
-          const copy = { ...currVal };
-          copy.body = "";
-          return copy;
+      setIsDisabled(true);
+      setPosting(true);
+
+      addComment(article_id, commentInput)
+        .then((response) => {
+          const postedComment = response.data.postedComment;
+
+          setCommentInput((currVal) => {
+            const copy = { ...currVal };
+            copy.body = "";
+            return copy;
+          });
+          setLoggedInUser((currVal) => {
+            const copy = { ...currVal };
+            const commentsCopy = [...copy.comments, postedComment];
+            copy.comments = commentsCopy;
+            return copy;
+          });
+
+          setArticleComments((currVal) => {
+            const copy = [...currVal, postedComment];
+            return copy;
+          });
+
+          setIsDisabled(false);
+          setPosting(false);
+        })
+        .catch((error) => {
+          console.log("add comment err: ", error);
+          setErr(err);
+          console.log(err);
         });
-        setLoggedInUser((currVal) => {
-          const copy = { ...currVal };
-          const commentsCopy = [...copy.comments, postedComment];
-          copy.comments = commentsCopy;
-          return copy;
-        });
-
-        setArticleComments((currVal) => {
-          const copy = [...currVal, postedComment];
-          return copy;
-        });
-
-        setIsDisabled(false);
-        setPosting(false);
-      })
-      .catch((err) => {
-        console.log("add comment err: ", err);
-        setErr("Sorry, we couldn't post your comment...");
-      });
+    }
   };
 
   return (
     <div className="add-comment">
-      {err ? (
-        <p>{err}</p>
+      {noBody && <p>You need to write a comment to post something...</p>}
+      {err && !noBody ? (
+        <p>Sorry, we couldn't post your comment... </p>
       ) : posting ? (
         <p>Posting your comment...</p>
       ) : (

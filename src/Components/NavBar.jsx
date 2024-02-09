@@ -9,7 +9,7 @@ export default function NavBar() {
       <Link to="/" className="nav-link">
         Home
       </Link>
-      <Link to={`/${loggedInUser.username}`} className="nav-link">
+      <Link to={`/users/${loggedInUser.username}`} className="nav-link">
         <img
           src={loggedInUser.avatar_url}
           alt={`${loggedInUser.username}'s avatar`}

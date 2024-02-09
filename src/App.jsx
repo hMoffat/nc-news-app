@@ -4,9 +4,9 @@ import { Routes, Route, useSearchParams } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import HomePage from "./Components/pages/HomePage";
 import ArticlePage from "./Components/pages/ArticlePage";
-import TopicPage from "./Components/pages/TopicPage";
 import UserPage from "./Components/pages/UserPage";
 import UserContext from "./Components/UserContext";
+import ErrorPage from "./Components/pages/ErrorPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
@@ -70,7 +70,7 @@ function App() {
           <Route
             path="/topics/:topic"
             element={
-              <TopicPage
+              <HomePage
                 className="topic-page page"
                 topics={topics}
                 setTopics={setTopics}
@@ -81,9 +81,10 @@ function App() {
             }
           />
           <Route
-            path="/:username"
+            path="/users/:username"
             element={<UserPage className="user-page page" />}
           />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </UserContext.Provider>
     </div>
