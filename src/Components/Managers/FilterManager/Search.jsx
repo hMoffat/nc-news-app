@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useParams } from "react-router-dom";
 
-export default function Search() {
+export default function Search({ searchesDisabled }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const orderQuery = searchParams.get("order");
@@ -39,19 +39,27 @@ export default function Search() {
   return (
     <div className="search">
       <div className="search-order">
-        <label htmlFor="order">You are sorting by {order}</label>
+        <label htmlFor="order">
+          Sort order: {order === "asc" ? "Ascending" : "Descending"}
+        </label>
         <button
           id="order"
           type="button"
           onClick={handleSearchOrderClick}
           value={order}
+          disabled={searchesDisabled.order}
         >
-          {order === "asc" ? "desc" : "asc"}
+          {order === "asc" ? "Descending" : "Ascending"}
         </button>
       </div>
       <div className="search-sort_by">
         <label htmlFor="sort_by">Sort by...</label>
-        <select id="sort_by" value={sort_by} onChange={handleSortOptionChange}>
+        <select
+          id="sort_by"
+          value={sort_by}
+          onChange={handleSortOptionChange}
+          disabled={searchesDisabled.selectSort}
+        >
           <option value="Select..." key="select">
             Select...
           </option>

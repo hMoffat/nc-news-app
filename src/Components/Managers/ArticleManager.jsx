@@ -3,9 +3,8 @@ import ArticleCard from "../Cards/ArticleCard";
 import { fetchArticles } from "../../api/api";
 import { useParams, useSearchParams } from "react-router-dom";
 
-export default function ArticleManager() {
+export default function ArticleManager({ isLoading, setIsLoading }) {
   const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const { topic } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const sort_byQuery = searchParams.get("sort_by");
@@ -13,7 +12,6 @@ export default function ArticleManager() {
   const [err, setErr] = useState(null);
 
   useEffect(() => {
-    console.log("active", topic, sort_byQuery, orderQuery);
     setIsLoading(true);
 
     fetchArticles(topic, sort_byQuery, orderQuery)

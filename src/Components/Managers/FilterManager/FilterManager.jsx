@@ -1,12 +1,12 @@
 import Search from "./Search";
 import Topics from "./Topics";
+import "./FilterManager.css";
 
-export default function FilterManager({ topics, setTopics }) {
+export default function FilterManager({ topics, setTopics, searchesDisabled }) {
   return (
     <div className="filter">
-      <h2>FilterManager Component Placeholder</h2>
       <Topics topics={topics} setTopics={setTopics} />
-      <Search />
+      <Search searchesDisabled={searchesDisabled} />
     </div>
   );
 }

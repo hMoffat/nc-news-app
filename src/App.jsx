@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useSearchParams } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import HomePage from "./Components/pages/HomePage";
 import ArticlePage from "./Components/pages/ArticlePage";
@@ -17,6 +17,33 @@ function App() {
     comments: [],
   });
   const [topics, setTopics] = useState([]);
+  const [searchesDisabled, setSearchesDisabled] = useState({
+    selectSort: false,
+    order: false,
+  });
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const sortQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
+
+  useEffect(() => {
+    if (isLoading) {
+      setSearchesDisabled((currVal) => {
+        const copy = { ...currVal };
+        currVal.order = true;
+        currVal.selectSort = true;
+        return copy;
+      });
+    } else {
+      setSearchesDisabled((currVal) => {
+        const copy = { ...currVal };
+        currVal.order = false;
+        currVal.selectSort = false;
+        return copy;
+      });
+    }
+  }, [sortQuery, orderQuery, isLoading]);
 
   return (
     <div className="app layout">
@@ -30,6 +57,9 @@ function App() {
                 className="home-page page"
                 topics={topics}
                 setTopics={setTopics}
+                searchesDisabled={searchesDisabled}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
               />
             }
           />
@@ -44,6 +74,9 @@ function App() {
                 className="topic-page page"
                 topics={topics}
                 setTopics={setTopics}
+                searchesDisabled={searchesDisabled}
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
               />
             }
           />
