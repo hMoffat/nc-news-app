@@ -11,3 +11,11 @@
   background-color: var(--light-shade);
   color: var(--dark-shade);
 }
+
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  height: -webkit-fill-available;
+}
