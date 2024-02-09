@@ -4,7 +4,6 @@ import { Routes, Route, useSearchParams } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import HomePage from "./Components/pages/HomePage";
 import ArticlePage from "./Components/pages/ArticlePage";
-import TopicPage from "./Components/pages/TopicPage";
 import UserPage from "./Components/pages/UserPage";
 import UserContext from "./Components/UserContext";
 
@@ -70,7 +69,7 @@ function App() {
           <Route
             path="/topics/:topic"
             element={
-              <TopicPage
+              <HomePage
                 className="topic-page page"
                 topics={topics}
                 setTopics={setTopics}
