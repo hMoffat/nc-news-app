@@ -11,7 +11,6 @@ export default function Topics({ topics, setTopics }) {
 
   useEffect(() => {
     setSelectReminder(false);
-    console.log(topic, selectTopic);
     if (topic === selectTopic) {
       setIsDisabled(true);
     } else {
@@ -49,24 +48,30 @@ export default function Topics({ topics, setTopics }) {
   };
 
   return (
-    <form className="select-topic" onSubmit={handleTopicSubmit}>
-      <label htmlFor="topic-dropdown">Select a topic: </label>
-      <select id="topic-dropdown" defaultValue={topic} onChange={handleSelect}>
-        <option value="Select..." key="select">
-          Select...
-        </option>
-        {topics.map((aTopic) => {
-          return (
-            <option value={aTopic.slug} key={aTopic.slug}>
-              {aTopic.slug}
-            </option>
-          );
-        })}
-      </select>
-      <button type="submit" disabled={isDisabled}>
-        Go to topic
-      </button>
-      {selectReminder ? <p>You need to choose a topic</p> : null}
-    </form>
+    <div className="topic">
+      <form className="select-topic" onSubmit={handleTopicSubmit}>
+        <label htmlFor="topic-dropdown">Select a topic: </label>
+        <select
+          id="topic-dropdown"
+          defaultValue={topic}
+          onChange={handleSelect}
+        >
+          <option value="Select..." key="select">
+            Select...
+          </option>
+          {topics.map((aTopic) => {
+            return (
+              <option value={aTopic.slug} key={aTopic.slug}>
+                {aTopic.slug}
+              </option>
+            );
+          })}
+        </select>
+        <button type="submit" disabled={isDisabled}>
+          Go to topic
+        </button>
+        {selectReminder ? <p>You need to choose a topic</p> : null}
+      </form>
+    </div>
   );
 }

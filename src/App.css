@@ -38,13 +38,3 @@
   margin: auto;
   display: block;
 }
-
-@media (min-width: 480px) {
-  .app.layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
-    grid-template-areas:
-      "nav"
-      "main";
-  }
-}
