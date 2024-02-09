@@ -2,10 +2,6 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useParams } from "react-router-dom";
 
 export default function Search() {
-  //buttons/inputs that set the url to have the queries in
-  //local state object for updating the values of these inputs
-  //pass a filterObj state down from app through home page/topic page to article manager
-  // wait do i need that if i'm updating the url?
   const [searchParams, setSearchParams] = useSearchParams();
 
   const orderQuery = searchParams.get("order");
