@@ -14,12 +14,4 @@ error handling notes
 
 - for a non-existent path.
 
-  - 404 working for /dfdf, /sfsd/sdg, /topics,
-    -'still building this page, sorry' for non existant user (correct this once other user functions added)
-
-- for a non-existent article.
-  - /topics/gfsdg goes to 'loading gfsdg' 'something went wrong'
-- for a non-existent topic.
-  -/topics/coding/ssgs goes to 'loading'
-- when posting a new comment if they have not - provided all of the required information.
-  - has a 'sorry couldn't post your comment message' instead of forcing add comment body
+  -'still building this page, sorry' for non existant user (correct this once other user functions added)

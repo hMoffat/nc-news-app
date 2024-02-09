@@ -6,6 +6,7 @@ import "./ArticlePage.css";
 import AddComment from "../Forms/AddComment";
 import CommentsManager from "../Managers/CommentsManager";
 import UserContext from "../UserContext";
+import ErrorPage from "./ErrorPage";
 
 export default function ArticlePage() {
   const [article, setArticle] = useState({});
@@ -14,6 +15,7 @@ export default function ArticlePage() {
   const [commentsAreLoading, setCommentsAreLoading] = useState(true);
   const [articleComments, setArticleComments] = useState([]);
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     fetchArticleById(state).then((response) => {
@@ -23,21 +25,35 @@ export default function ArticlePage() {
   }, []);
 
   useEffect(() => {
-    fetchCommentsByArticleId(state).then((response) => {
-      setArticleComments(response.data.comments);
-      setCommentsAreLoading(false);
+    fetchCommentsByArticleId(state)
+      .then((response) => {
+        setArticleComments(response.data.comments);
+        setCommentsAreLoading(false);
 
-      const userComments = response.data.comments.filter(
-        (comment) => comment.author === loggedInUser.username
-      );
+        const userComments = response.data.comments.filter(
+          (comment) => comment.author === loggedInUser.username
+        );
 
-      setLoggedInUser((currVal) => {
-        const copy = { ...currVal };
-        copy.comments = userComments;
-        return copy;
+        setLoggedInUser((currVal) => {
+          const copy = { ...currVal };
+          copy.comments = userComments;
+          return copy;
+        });
+      })
+      .catch((error) => {
+        setErr(error);
       });
-    });
   }, []);
+
+  if (err) {
+    return (
+      <ErrorPage
+        message={"This doesn't article doesn't exist..."}
+        status={404}
+        className="error-page"
+      />
+    );
+  }
 
   return (
     <div className="article-page page layout">
