@@ -65,29 +65,3 @@ export default function ArticleManager() {
     </>
   );
 }
-
-// console.log(
-//   articles.sort((a, b) => {
-//     return a.comment_count - b.comment_count;
-//   })
-// );
-
-// let sortBy = "";
-// if (sort_byQuery == "comment_count") {
-//   sortBy += "author";
-// } else {
-//   sortBy += sort_byQuery;
-// }
-
-// .then((response) => {
-//   let articlesCopy = [...response.data.articles];
-//   if (sort_byQuery === "comment_count") {
-//     console.log("active if statement");
-//     articlesCopy.sort((a, b) => {
-//       return a.comment_count - b.comment_count;
-//     });
-//   }
-//   return articlesCopy;
-// })
-
-//setArticles(response);
