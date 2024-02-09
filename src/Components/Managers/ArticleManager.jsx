@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../Cards/ArticleCard";
 import { fetchArticles } from "../../api/api";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, useNavigate } from "react-router-dom";
+import ErrorPage from "../pages/ErrorPage";
 
 export default function ArticleManager({ isLoading, setIsLoading }) {
   const [articles, setArticles] = useState([]);
@@ -10,6 +11,7 @@ export default function ArticleManager({ isLoading, setIsLoading }) {
   const sort_byQuery = searchParams.get("sort_by");
   const orderQuery = searchParams.get("order");
   const [err, setErr] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,11 +37,21 @@ export default function ArticleManager({ isLoading, setIsLoading }) {
 
         setIsLoading(false);
       })
-      .catch((err) => {
-        console.log("fetch articles err: ", err);
-        setErr(err);
+      .catch((error) => {
+        console.log("fetch articles err: ", error);
+        setErr(error);
       });
   }, [topic, sort_byQuery, orderQuery]);
+
+  if (err) {
+    return (
+      <ErrorPage
+        message={err.response.data.message}
+        status={err.response.status}
+        className="error-page"
+      />
+    );
+  }
 
   return (
     <>

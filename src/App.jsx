@@ -6,6 +6,7 @@ import HomePage from "./Components/pages/HomePage";
 import ArticlePage from "./Components/pages/ArticlePage";
 import UserPage from "./Components/pages/UserPage";
 import UserContext from "./Components/UserContext";
+import ErrorPage from "./Components/pages/ErrorPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
@@ -83,6 +84,7 @@ function App() {
             path="/users/:username"
             element={<UserPage className="user-page page" />}
           />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </UserContext.Provider>
     </div>

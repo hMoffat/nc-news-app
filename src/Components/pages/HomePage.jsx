@@ -15,8 +15,6 @@ export default function HomePage({
   const topicObj = topics.find((aTopic) => aTopic.slug === topic);
   const topicObjCopy = { ...topicObj };
 
-  useEffect(() => {});
-
   return (
     <div className="home-page page layout">
       <FilterManager

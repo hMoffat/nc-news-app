@@ -13,7 +13,9 @@
     "main"
     "nav";
 }
-
+.error-page {
+  height: 80vh;
+}
 .page {
   overflow: auto;
   grid-area: main;
