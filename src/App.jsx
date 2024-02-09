@@ -81,7 +81,7 @@ function App() {
             }
           />
           <Route
-            path="/:username"
+            path="/users/:username"
             element={<UserPage className="user-page page" />}
           />
         </Routes>
