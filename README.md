@@ -5,7 +5,7 @@ https://nc-news-hmoffat.netlify.app
 
 Made as a one week front end project in a Software Development bootcamp, this project will continue to be updated at the end of the course. At this time, mobile view is recommended for a better experience.
 
-## NC News API
+### NC News API
 
 The data used in the app is requested from the companion NC News API (also made as a one week project on the bootcamp). The repo can be found here: https://github.com/hMoffat/NC-News
 
