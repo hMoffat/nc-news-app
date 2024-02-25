@@ -33,3 +33,11 @@ export const deleteComment = (comment_id) => {
 export const fetchTopics = () => {
   return ncNewsApi.get("/topics");
 };
+
+export const fetchUserComments = (username) => {
+  return ncNewsApi.get(`/users/${username}/comments`);
+};
+
+export const fetchUserByUsername = (username) => {
+  return ncNewsApi.get(`/users/${username}`);
+};

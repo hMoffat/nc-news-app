@@ -29,10 +29,12 @@ export default function ArticleCard({ article }) {
       )}
 
       <div className="card-header">
-        <h4>
+        <h4 className="topic-link">
           <Link to={`/topics/${topic}`}>{topic}</Link>
         </h4>
-        <h4>{author}</h4>
+        <h4 className="author-link">
+          <Link to={`/users/${author}`}>{author}</Link>
+        </h4>
       </div>
       {body ? (
         <img
