@@ -19,7 +19,7 @@
   padding-top: 20px;
 }
 
-.card-header a {
+.card-header .topic-link a {
   background-color: var(--main-accent);
   padding: 5px 10px;
   border-radius: 20%;

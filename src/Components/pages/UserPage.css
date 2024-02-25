@@ -21,11 +21,15 @@
   display: flex;
   flex-direction: column;
   width: 85vw;
-  padding: 2rem;
+  padding: 2rem 0;
+  justify-self: center;
   height: 400px;
   justify-content: space-around;
 }
 
-.comments {
+.user-page .comments {
   grid-area: comments;
+  width: 85vw;
+  justify-self: center;
+  padding: 1rem 0;
 }

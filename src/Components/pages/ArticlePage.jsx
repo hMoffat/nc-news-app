@@ -5,7 +5,6 @@ import ArticleCard from "../Cards/ArticleCard";
 import "./ArticlePage.css";
 import AddComment from "../Forms/AddComment";
 import CommentsManager from "../Managers/CommentsManager";
-import UserContext from "../UserContext";
 import ErrorPage from "./ErrorPage";
 
 export default function ArticlePage() {
@@ -14,7 +13,6 @@ export default function ArticlePage() {
   const [articleIsLoading, setArticleIsLoading] = useState(true);
   const [commentsAreLoading, setCommentsAreLoading] = useState(true);
   const [articleComments, setArticleComments] = useState([]);
-  const { loggedInUser, setLoggedInUser } = useContext(UserContext);
   const [err, setErr] = useState(null);
 
   useEffect(() => {
@@ -29,16 +27,6 @@ export default function ArticlePage() {
       .then((response) => {
         setArticleComments(response.data.comments);
         setCommentsAreLoading(false);
-
-        const userComments = response.data.comments.filter(
-          (comment) => comment.author === loggedInUser.username
-        );
-
-        setLoggedInUser((currVal) => {
-          const copy = { ...currVal };
-          copy.comments = userComments;
-          return copy;
-        });
       })
       .catch((error) => {
         setErr(error);

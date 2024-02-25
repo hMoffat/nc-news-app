@@ -1,32 +1,33 @@
+import { useParams } from "react-router-dom";
 import CommentCard from "../Cards/CommentCard";
-import UserContext from "../UserContext";
-import { useContext } from "react";
+
+import { useEffect, useState } from "react";
+import { fetchUserComments } from "../../api/api";
 
 export default function CommentsManager({
   articleComments,
   setArticleComments,
+  userPageComments,
+  setUserPageComments,
 }) {
-  const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+  const comments = articleComments ? articleComments : userPageComments;
+  console.log(comments);
 
-  const comments = articleComments ? articleComments : loggedInUser.comments;
   return (
     <div className="comments">
       <h3>Comments</h3>
       <ul>
-        {comments ? (
-          comments.map((comment) => {
-            return (
-              <li key={comment.comment_id}>
-                <CommentCard
-                  comment={comment}
-                  setArticleComments={setArticleComments}
-                />
-              </li>
-            );
-          })
-        ) : (
-          <p>Sorry, something went wrong....</p>
-        )}
+        {comments.map((comment) => {
+          return (
+            <li key={comment.comment_id}>
+              <CommentCard
+                comment={comment}
+                setArticleComments={setArticleComments}
+                setUserPageComments={setUserPageComments}
+              />
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
