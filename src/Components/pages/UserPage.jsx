@@ -45,7 +45,7 @@ export default function UserPage() {
           name={displayedUser.name}
         />
       </div>
-      <div className="comments">
+      <>
         {commentsAreLoading ? (
           <p>Loading...</p>
         ) : (
@@ -54,7 +54,7 @@ export default function UserPage() {
             setUserPageComments={setUserPageComments}
           />
         )}
-      </div>
+      </>
     </div>
   );
 }
