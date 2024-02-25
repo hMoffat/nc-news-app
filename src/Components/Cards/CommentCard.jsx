@@ -5,7 +5,11 @@ import AddVote from "../Buttons/AddVote";
 import { useContext } from "react";
 import UserContext from "../UserContext";
 
-export default function CommentCard({ comment, setArticleComments }) {
+export default function CommentCard({
+  comment,
+  setArticleComments,
+  setUserPageComments,
+}) {
   const date = shortStringDate(comment.created_at);
   const { loggedInUser } = useContext(UserContext);
 
@@ -27,7 +31,9 @@ export default function CommentCard({ comment, setArticleComments }) {
         ) : null}
         {comment.author === loggedInUser.username ? (
           <DeleteComment
-            setArticleComments={setArticleComments}
+            setComments={
+              setArticleComments ? setArticleComments : setUserPageComments
+            }
             comment_id={comment.comment_id}
           />
         ) : null}

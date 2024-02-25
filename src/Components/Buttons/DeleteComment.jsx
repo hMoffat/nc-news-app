@@ -1,28 +1,16 @@
 import { deleteComment } from "../../api/api";
-import UserContext from "../UserContext";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
-export default function DeleteComment({ setArticleComments, comment_id }) {
-  const { setLoggedInUser } = useContext(UserContext);
+export default function DeleteComment({ setComments, comment_id }) {
   const [isDisabled, setIsDisabled] = useState(false);
   const [deleteing, setDeleteing] = useState(false);
 
   const handleDelete = (event) => {
     setIsDisabled(true);
     setDeleteing(true);
-    setLoggedInUser((currVal) => {
-      const copy = { ...currVal };
-
-      const commentsCopy = copy.comments;
-      const filteredComments = commentsCopy.filter(
-        (comment) => comment_id !== comment.comment_id
-      );
-      copy.comments = filteredComments;
-      return copy;
-    });
     deleteComment(comment_id).then((response) => {
-      if (setArticleComments) {
-        setArticleComments((currVal) => {
+      if (setComments) {
+        setComments((currVal) => {
           const copy = [...currVal];
           const filteredCopy = copy.filter(
             (comment) => comment_id !== comment.comment_id

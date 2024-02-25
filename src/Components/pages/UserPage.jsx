@@ -4,49 +4,57 @@ import { useParams } from "react-router-dom";
 import UserCard from "../Cards/UserCard";
 import CommentsManager from "../Managers/CommentsManager";
 import "./UserPage.css";
-import { fetchUserByUsername } from "../../api/api";
+import { fetchUserByUsername, fetchUserComments } from "../../api/api";
+import ErrorPage from "./ErrorPage";
 
 export default function UserPage() {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
   const { username } = useParams();
   const isLoggedInUser = loggedInUser.username === username;
-  const [pageUser, setPageUser] = useState({});
+  const [displayedUser, setDisplayedUser] = useState({});
+  const [userPageComments, setUserPageComments] = useState([]);
+  const [commentsAreLoading, setCommentsAreLoading] = useState(true);
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
-    fetchUserByUsername(username).then((results) => {
-      setPageUser({ ...results.data.user });
-    });
+    fetchUserByUsername(username)
+      .then((results) => {
+        setDisplayedUser({ ...results.data.user });
+        return fetchUserComments(username);
+      })
+      .then((response) => {
+        const fetchedComments = response.data.userComments;
+        setUserPageComments(fetchedComments);
+        setCommentsAreLoading(false);
+      })
+      .catch((error) => {
+        setErr(error);
+      });
   }, []);
+
+  if (err) {
+    return <ErrorPage />;
+  }
 
   return (
     <div className="user-page page layout">
-      {isLoggedInUser ? (
-        <>
-          <div className="user-card">
-            <UserCard
-              user={username}
-              avatar={loggedInUser.avatar_url}
-              name={loggedInUser.name}
-            />
-          </div>
-          <div className="comments">
-            <CommentsManager />
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="user-card">
-            <UserCard
-              user={username}
-              avatar={pageUser.avatar_url}
-              name={pageUser.name}
-            />
-          </div>
-          <div className="comments">
-            <CommentsManager />
-          </div>
-        </>
-      )}
+      <div className="user-card">
+        <UserCard
+          user={username}
+          avatar={displayedUser.avatar_url}
+          name={displayedUser.name}
+        />
+      </div>
+      <div className="comments">
+        {commentsAreLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <CommentsManager
+            userPageComments={userPageComments}
+            setUserPageComments={setUserPageComments}
+          />
+        )}
+      </div>
     </div>
   );
 }
