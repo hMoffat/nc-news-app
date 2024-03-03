@@ -31,6 +31,15 @@ export default function NavBar({ setFilter, filter }) {
 
   return (
     <nav className="nav-bar">
+      {width === "desktop" && (
+        <button
+          onClick={() => {
+            setFilter(!filter);
+          }}
+        >
+          {filter ? `Hide` : `Show`} article filter options
+        </button>
+      )}
       <Link to="/" className="nav-link">
         <img src={homeSymbol} alt="Home symbol" className="home-symbol" />
         <p>Home</p>
@@ -41,17 +50,8 @@ export default function NavBar({ setFilter, filter }) {
           alt={`${loggedInUser.username}'s avatar`}
           className="avatar"
         />
-        <p>You</p>
+        <p>{width === "mob" ? `You` : loggedInUser.username}</p>
       </Link>
-      {width === "desktop" && (
-        <button
-          onClick={() => {
-            setFilter(!filter);
-          }}
-        >
-          {filter ? `Hide` : `Show`} article filter options
-        </button>
-      )}
     </nav>
   );
 }
