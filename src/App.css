@@ -5,8 +5,9 @@
 }
 
 .app.layout {
-  height: -webkit-fill-available;
   height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto minmax(auto, max-content);
