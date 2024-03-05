@@ -90,4 +90,14 @@ li {
   li {
     max-width: 40%;
   }
+  .home-page.layout {
+    height: auto;
+    margin: 0 5vw;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "filter articles";
+  }
+  /* div.filter {
+    align-self: start;
+  } */
 }

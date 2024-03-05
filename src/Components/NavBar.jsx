@@ -1,13 +1,26 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useParams } from "react-router-dom";
 import UserContext from "./UserContext";
 import { useContext, useEffect, useState } from "react";
 import homeSymbol from "../assets/icons8-home.svg";
 
 export default function NavBar({ setFilter, filter }) {
   const { loggedInUser } = useContext(UserContext);
+  const [topicPage, setTopicPage] = useState();
+  const location = useLocation();
   const [width, setWidth] = useState(
     window.innerWidth > 480 ? "desktop" : "mob"
   );
+
+  useEffect(() => {
+    if (location.pathname.includes("topics")) {
+      const locationCopy = location.pathname;
+      const locArr = locationCopy.split("/");
+      setTopicPage(locArr[2]);
+      console.log(topicPage);
+    } else {
+      setTopicPage(null);
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleWidth = () => {
@@ -45,6 +58,11 @@ export default function NavBar({ setFilter, filter }) {
         />
         <p>{width === "mob" ? `You` : loggedInUser.username}</p>
       </NavLink>
+      {topicPage && (
+        <NavLink to={`/topics/${topicPage}`} className="nav-link">
+          <p>{topicPage}</p>
+        </NavLink>
+      )}
       {width === "desktop" && (
         <button
           onClick={() => {
