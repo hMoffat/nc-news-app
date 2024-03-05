@@ -20,6 +20,7 @@ function App() {
     selectSort: false,
     order: false,
   });
+  const [filter, setFilter] = useState(window.innerWidth > 480 ? false : true);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +48,7 @@ function App() {
   return (
     <div className="app layout">
       <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
-        <NavBar className="nav-bar" />
+        <NavBar className="nav-bar" setFilter={setFilter} filter={filter} />
         <Routes>
           <Route
             path="/"
@@ -59,6 +60,7 @@ function App() {
                 searchesDisabled={searchesDisabled}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
+                filter={filter}
               />
             }
           />
@@ -76,6 +78,7 @@ function App() {
                 searchesDisabled={searchesDisabled}
                 setIsLoading={setIsLoading}
                 isLoading={isLoading}
+                filter={filter}
               />
             }
           />

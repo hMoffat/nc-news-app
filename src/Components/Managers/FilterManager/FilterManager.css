@@ -73,13 +73,16 @@
     grid-template-areas:
       "nav"
       "main";
+    row-gap: 2.5vh;
   }
 
   div.filter {
     font-size: smaller;
     flex-direction: row;
     align-items: end;
-    padding: 0 5vw;
+    margin: 0 5vw;
+    padding-left: 15px;
+    width: fit-content;
   }
 
   div.filter .topic {

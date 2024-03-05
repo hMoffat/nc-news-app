@@ -5,8 +5,9 @@
 }
 
 .app.layout {
-  height: -webkit-fill-available;
   height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto minmax(auto, max-content);
@@ -53,4 +54,28 @@
 
 .nav-bar img.home-symbol {
   max-width: 36px;
+}
+
+@media (min-width: 480px) {
+  /* Currently some styles in filterManager that need to be moved as part of the refactor */
+  .nav-link {
+    flex-direction: row;
+    background-color: var(--lighter-shade);
+  }
+  .nav-link * {
+    font-size: large;
+    font-weight: 600;
+    background-color: var(--lighter-shade);
+    color: var(--main-accent);
+  }
+  .nav-link::content {
+    border-bottom: solid 2px var(--main-accent);
+  }
+
+  .nav-link img {
+    background-color: var(--main-accent);
+  }
+  .nav-bar {
+    background-color: var(--lighter-shade);
+  }
 }

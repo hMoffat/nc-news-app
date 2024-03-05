@@ -10,6 +10,7 @@ export default function HomePage({
   searchesDisabled,
   isLoading,
   setIsLoading,
+  filter,
 }) {
   const { topic } = useParams();
   const topicObj = topics.find((aTopic) => aTopic.slug === topic);
@@ -17,12 +18,14 @@ export default function HomePage({
 
   return (
     <div className="home-page page layout">
-      <FilterManager
-        className="filter"
-        topics={topics}
-        setTopics={setTopics}
-        searchesDisabled={searchesDisabled}
-      />
+      {filter && (
+        <FilterManager
+          className="filter"
+          topics={topics}
+          setTopics={setTopics}
+          searchesDisabled={searchesDisabled}
+        />
+      )}
       <div className="articles">
         {!topic ? null : !topicObj ? (
           <p>Loading {topic}...</p>
