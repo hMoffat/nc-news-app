@@ -87,8 +87,9 @@ li {
     justify-content: space-between;
   }
 
-  li {
+  .articles li {
     max-width: 40%;
+    margin-bottom: auto;
   }
   .home-page.layout {
     height: auto;
@@ -97,7 +98,16 @@ li {
     grid-template-columns: auto 1fr;
     grid-template-areas: "filter articles";
   }
-  /* div.filter {
-    align-self: start;
-  } */
+  .articles {
+    overflow-y: visible;
+    overflow-x: hidden;
+    width: 100%;
+    justify-content: start;
+  }
+  .article-card .card-img {
+    max-width: 100%;
+  }
+  div.article-card {
+    width: 100%;
+  }
 }

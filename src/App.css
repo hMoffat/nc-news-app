@@ -92,4 +92,7 @@
     color: var(--light-shade);
     font-weight: 600;
   }
+  .home-page.page {
+    overflow: hidden;
+  }
 }
