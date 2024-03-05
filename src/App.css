@@ -60,22 +60,35 @@
   /* Currently some styles in filterManager that need to be moved as part of the refactor */
   .nav-link {
     flex-direction: row;
-    background-color: var(--lighter-shade);
+    background-color: var(--light-shade);
+    margin-right: 3rem;
   }
   .nav-link * {
     font-size: large;
     font-weight: 600;
-    background-color: var(--lighter-shade);
+    background-color: var(--light-shade);
     color: var(--main-accent);
   }
-  .nav-link::content {
-    border-bottom: solid 2px var(--main-accent);
+  a.nav-link.active {
+    border-bottom: solid 3px var(--main-accent);
   }
 
-  .nav-link img {
+  .nav-link img.avatar {
     background-color: var(--main-accent);
+    margin-right: 5px;
   }
   .nav-bar {
-    background-color: var(--lighter-shade);
+    background-color: var(--light-shade);
+    padding: 0px;
+    margin: 0 5vw;
+    justify-content: flex-start;
+  }
+  .nav-bar button {
+    padding: 5px 10px;
+    background-color: var(--main-accent);
+    border: solid 2px var(--main-accent);
+    border-radius: 5%;
+    color: var(--light-shade);
+    font-weight: 600;
   }
 }

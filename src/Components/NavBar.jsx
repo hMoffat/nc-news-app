@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import UserContext from "./UserContext";
 import { useContext, useEffect, useState } from "react";
 import homeSymbol from "../assets/icons8-home.svg";
@@ -31,6 +31,20 @@ export default function NavBar({ setFilter, filter }) {
 
   return (
     <nav className="nav-bar">
+      <NavLink to="/" className="nav-link">
+        {width === "mob" ? (
+          <img src={homeSymbol} alt="Home symbol" className="home-symbol" />
+        ) : null}
+        <p>Home</p>
+      </NavLink>
+      <NavLink to={`/users/${loggedInUser.username}`} className="nav-link">
+        <img
+          src={loggedInUser.avatar_url}
+          alt={`${loggedInUser.username}'s avatar`}
+          className="avatar"
+        />
+        <p>{width === "mob" ? `You` : loggedInUser.username}</p>
+      </NavLink>
       {width === "desktop" && (
         <button
           onClick={() => {
@@ -40,18 +54,6 @@ export default function NavBar({ setFilter, filter }) {
           {filter ? `Hide` : `Show`} article filter options
         </button>
       )}
-      <Link to="/" className="nav-link">
-        <img src={homeSymbol} alt="Home symbol" className="home-symbol" />
-        <p>Home</p>
-      </Link>
-      <Link to={`/users/${loggedInUser.username}`} className="nav-link">
-        <img
-          src={loggedInUser.avatar_url}
-          alt={`${loggedInUser.username}'s avatar`}
-          className="avatar"
-        />
-        <p>{width === "mob" ? `You` : loggedInUser.username}</p>
-      </Link>
     </nav>
   );
 }
