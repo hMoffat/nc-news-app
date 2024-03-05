@@ -1,5 +1,6 @@
 :root {
   --light-shade: #faf6f4;
+  --alt-light-shade: #f2e5de;
   --light-accent: #46abcc;
   --main-accent: #00168f;
   --dark-accent: #9a5562;
@@ -11,3 +12,9 @@
   background-color: var(--light-shade);
   color: var(--dark-shade);
 }
+
+/* @media (min-width: 480px) {
+  * {
+    background-color: var(--alt-light-shade);
+  }
+} */
