@@ -36,7 +36,7 @@ export default function HomePage({
           </div>
         )}
         <ArticleManager
-          className="articles"
+          className="article-manager"
           topic={topic}
           isLoading={isLoading}
           setIsLoading={setIsLoading}

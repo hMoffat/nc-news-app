@@ -20,7 +20,8 @@ function App() {
     selectSort: false,
     order: false,
   });
-  const [filter, setFilter] = useState(window.innerWidth > 480 ? false : true);
+  //  const [filter, setFilter] = useState(window.innerWidth > 480 ? false : true);
+  const [filter, setFilter] = useState(true);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);

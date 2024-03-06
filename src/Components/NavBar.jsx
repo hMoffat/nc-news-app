@@ -58,7 +58,7 @@ export default function NavBar({ setFilter, filter }) {
         />
         <p>{width === "mob" ? `You` : loggedInUser.username}</p>
       </NavLink>
-      {topicPage && (
+      {topicPage && width === "desktop" && (
         <NavLink to={`/topics/${topicPage}`} className="nav-link">
           <p>{topicPage}</p>
         </NavLink>

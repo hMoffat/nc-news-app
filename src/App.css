@@ -60,18 +60,23 @@
   /* Currently some styles in filterManager that need to be moved as part of the refactor */
   .nav-link {
     flex-direction: row;
-    background-color: var(--light-shade);
+    background-color: var(--main-accent);
     margin-right: 3rem;
     padding: 0 0.5rem;
   }
   .nav-link * {
     font-size: large;
     font-weight: 600;
-    background-color: var(--light-shade);
-    color: var(--main-accent);
+    background-color: var(--main-accent);
+    color: var(--light-shade);
   }
   a.nav-link.active {
-    border-bottom: solid 3px var(--main-accent);
+    /* border-bottom: solid 3px var(--main-accent); */
+    background-color: #0027ff;
+  }
+  a.nav-link.active * {
+    background-color: #0027ff;
+    color: var(--light-shade);
   }
 
   .nav-link img.avatar {
@@ -79,17 +84,22 @@
     margin-right: 5px;
   }
   .nav-bar {
-    background-color: var(--light-shade);
-    padding: 0px;
-    margin: 0 5vw;
+    background-color: var(--main-accent);
+    padding: 0 5vw;
+    margin: 0;
     justify-content: flex-start;
+    /* filter: brightness(90%); */
+    /* box-shadow: inset 0px -10px 10px -10px var(--main-accent); */
   }
   .nav-bar button {
     padding: 5px 10px;
     background-color: var(--main-accent);
-    border: solid 2px var(--main-accent);
+    border: solid 2px var(--light-shade);
     border-radius: 5%;
     color: var(--light-shade);
     font-weight: 600;
+  }
+  .home-page.page {
+    overflow: hidden;
   }
 }

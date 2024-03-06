@@ -60,7 +60,7 @@ export default function ArticleManager({ isLoading, setIsLoading }) {
       ) : isLoading ? (
         <p className="loading">Loading...</p>
       ) : (
-        <div className="articles">
+        <div className="just-articles">
           <ul>
             {articles.map((article) => {
               return (
