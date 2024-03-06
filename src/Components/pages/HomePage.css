@@ -84,12 +84,14 @@ li {
   ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   .articles li {
-    max-width: 40%;
-    margin-bottom: auto;
+    max-width: 400px;
+    min-width: 300px;
+    margin-bottom: 100px;
+    margin-right: 100px;
   }
   .home-page.layout {
     height: auto;
@@ -109,5 +111,8 @@ li {
   }
   div.article-card {
     width: 100%;
+  }
+  .just-articles {
+    margin-top: 2rem;
   }
 }
