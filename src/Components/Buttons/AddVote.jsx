@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addVotesByArticleId, addVotesByCommentId } from "../../api/api";
 import "./Buttons.css";
+import { SlLike, SlDislike } from "react-icons/sl";
 
 export default function AddArticleVote({
   currentVotes,
@@ -52,8 +53,7 @@ export default function AddArticleVote({
         }}
         aria-label="Like"
       >
-        {" "}
-        ❤️{" "}
+        <SlLike className="add-vote-svg dislike" />
       </button>
       <button
         onClick={() => {
@@ -61,8 +61,7 @@ export default function AddArticleVote({
         }}
         aria-label="Dislike"
       >
-        {" "}
-        👎{" "}
+        <SlDislike className="add-vote-svg dislike" />
       </button>
       {serverErr ? <p>Sorry, something went wrong!</p> : null}
     </div>

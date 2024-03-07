@@ -17,14 +17,26 @@
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
+  align-items: center;
 }
 
 .card-header .topic-link a {
   background-color: var(--main-accent);
   padding: 5px 10px;
-  border-radius: 20%;
+  border-radius: 5px;
   color: white;
   text-decoration: none;
+}
+
+.card-header img.avatar {
+  max-width: 40px;
+  max-height: 40px;
+  margin-left: 1rem;
+}
+
+.author-link {
+  display: flex;
+  align-items: center;
 }
 
 .card-title {
@@ -47,11 +59,53 @@
   display: flex;
   justify-content: space-between;
   grid-area: footer;
+  align-items: center;
+}
+
+.article-date {
+  text-align: start;
+  text-wrap: balance;
+}
+
+.article-comment-count {
+  text-align: end;
+  text-wrap: balance;
 }
 
 @media (min-width: 480px) {
   img {
     max-width: 200px;
     height: auto;
+  }
+  .article-page .card-img {
+    justify-self: start;
+  }
+  .article-page .article-card {
+    width: 90vw;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    grid-template-areas:
+      "header header"
+      "title title"
+      "img body"
+      "footer footer";
+  }
+  .article-page .card-title {
+    font-size: 2rem;
+  }
+  .article-page .card-body {
+    padding-top: 2px;
+  }
+
+  .article-page .card-footer {
+    justify-content: flex-end;
+  }
+  .article-page .card-footer p.article-comment-count {
+    margin-left: 2rem;
+  }
+  .article-page .card-footer .add-vote {
+    margin-left: 2rem;
   }
 }

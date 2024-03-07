@@ -30,7 +30,7 @@ export default function UserPage() {
       .catch((error) => {
         setErr(error);
       });
-  }, []);
+  }, [username]);
 
   if (err) {
     return <ErrorPage />;

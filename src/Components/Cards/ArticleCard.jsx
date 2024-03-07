@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import AddVote from "../Buttons/AddVote";
 import "../Cards/ArticleCard.css";
 import { shortStringDate } from "../../../Utils/utils";
+import { fetchUserByUsername } from "../../api/api";
+import { useState, useEffect } from "react";
 
 export default function ArticleCard({ article }) {
   const {
@@ -17,6 +19,13 @@ export default function ArticleCard({ article }) {
   } = article;
 
   const date = shortStringDate(created_at);
+  const [articleAvatar, setArticleAvatar] = useState("");
+
+  useEffect(() => {
+    fetchUserByUsername(author).then((response) => {
+      setArticleAvatar(response.data.user.avatar_url);
+    });
+  }, []);
 
   return (
     <div className="article-card">
@@ -32,9 +41,14 @@ export default function ArticleCard({ article }) {
         <h4 className="topic-link">
           <Link to={`/topics/${topic}`}>{topic}</Link>
         </h4>
-        <h4 className="author-link">
-          <Link to={`/users/${author}`}>{author}</Link>
-        </h4>
+        <Link to={`/users/${author}`} className="author-link">
+          <h4>{author}</h4>
+          <img
+            src={articleAvatar}
+            alt={`${author}'s avatar`}
+            className="avatar"
+          />
+        </Link>
       </div>
       {body ? (
         <img
@@ -60,9 +74,9 @@ export default function ArticleCard({ article }) {
         </div>
       ) : null}
       <div className="article card-footer">
-        <p>{date}</p>
+        <p className="article-date">{date}</p>
         <AddVote currentVotes={votes} article_id={article_id} />
-        <p>Comment Count: {comment_count}</p>
+        <p className="article-comment-count">Comment Count: {comment_count}</p>
       </div>
     </div>
   );
