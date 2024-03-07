@@ -42,12 +42,13 @@ export default function AddComment({ setArticleComments, article_id }) {
             copy.body = "";
             return copy;
           });
-          setLoggedInUser((currVal) => {
-            const copy = { ...currVal };
-            const commentsCopy = [...copy.comments, postedComment];
-            copy.comments = commentsCopy;
-            return copy;
-          });
+          // setLoggedInUser((currVal) => {
+          //   const copy = { ...currVal };
+          //   console.log(copy);
+          //   const commentsCopy = [...copy.comments, postedComment];
+          //   copy.comments = commentsCopy;
+          //   return copy;
+          // });
 
           setArticleComments((currVal) => {
             const copy = [...currVal, postedComment];

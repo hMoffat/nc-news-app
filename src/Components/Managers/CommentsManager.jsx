@@ -11,7 +11,6 @@ export default function CommentsManager({
   setUserPageComments,
 }) {
   const comments = articleComments ? articleComments : userPageComments;
-  console.log(comments);
 
   return (
     <div className="comments">
