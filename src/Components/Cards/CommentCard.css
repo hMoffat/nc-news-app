@@ -22,9 +22,6 @@
   grid-area: footer;
   grid-row-end: auto;
   display: flex;
-  justify-content: end;
-}
-
-.comment.card-footer * {
-  margin-left: 10px;
+  flex-direction: column;
+  align-items: flex-end;
 }

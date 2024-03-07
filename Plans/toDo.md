@@ -4,6 +4,7 @@
 
 - for user context, retrieve user from api instead of hardcoding
 - add comment - enter key not submitting
+- try splitting up paragraphs on regex word boundaries
 - would be nice to have user's avatar by their comment
 - double check feedbacks
 
