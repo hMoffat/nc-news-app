@@ -30,6 +30,10 @@
   font-weight: 600;
 }
 
+.add-vote button:hover {
+  box-shadow: 0px 0px 6px inset var(--dark-accent);
+}
+
 button.delete {
   border-radius: 4px;
   border: 1px solid var(--dark-shade);
@@ -47,4 +51,16 @@ button.delete {
   fill: var(--dark-accent);
   height: 2em;
   width: 2em;
+}
+
+.add-vote .true {
+  filter: brightness(70%);
+  cursor: not-allowed;
+  box-shadow: 0px 0px 6px inset var(--dark-accent);
+}
+
+.add-vote .false {
+  filter: unset;
+  cursor: unset;
+  box-shadow: none;
 }

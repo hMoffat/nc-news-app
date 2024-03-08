@@ -9,23 +9,22 @@ export default function AddArticleVote({
   comment_id,
 }) {
   const [votes, setVotes] = useState(currentVotes);
-  const [voted, setVoted] = useState(false);
   const [serverErr, setServerErr] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleVotes = (num) => {
-    if (!voted && !serverErr) {
+    setIsDisabled(true);
+    if (!serverErr) {
       setVotes(votes + num);
-      setVoted(true);
 
       if (article_id) {
         addVotesByArticleId(article_id, num)
           .then((response) => {
-            console.log(response);
+            setIsDisabled(false);
           })
           .catch((err) => {
             setVotes(votes - num);
 
-            setVoted(false);
             setServerErr(true);
           });
       }
@@ -33,11 +32,10 @@ export default function AddArticleVote({
         addVotesByCommentId(comment_id, num)
           .then((response) => {
             console.log(response);
+            setIsDisabled(false);
           })
           .catch((err) => {
             setVotes(votes - num);
-
-            setVoted(false);
             setServerErr(true);
           });
       }
@@ -51,7 +49,9 @@ export default function AddArticleVote({
         onClick={() => {
           handleVotes(1);
         }}
+        disabled={isDisabled}
         aria-label="Like"
+        className={isDisabled ? "true" : "false"}
       >
         <SlLike className="add-vote-svg dislike" />
       </button>
@@ -59,7 +59,9 @@ export default function AddArticleVote({
         onClick={() => {
           handleVotes(-1);
         }}
+        disabled={isDisabled}
         aria-label="Dislike"
+        className={isDisabled ? "true" : "false"}
       >
         <SlDislike className="add-vote-svg dislike" />
       </button>
