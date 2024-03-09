@@ -1,8 +1,14 @@
-import { Link, NavLink, useLocation, useParams } from "react-router-dom";
-import UserContext from "./UserContext";
+import { NavLink, useLocation } from "react-router-dom";
+import UserContext from "../Context/UserContext";
 import { useContext, useEffect, useState } from "react";
-import homeSymbol from "../assets/icons8-home.svg";
-import { navBar } from "./NavBar.module.css";
+import homeSymbol from "../../assets/icons8-home.svg";
+import {
+  navBar,
+  navBar__avatar,
+  navBar__homeSymbol,
+  navBar__filterButton,
+} from "./NavBar.module.css";
+import "./nav-links.css";
 
 export default function NavBar({ setFilter, filter }) {
   const { loggedInUser } = useContext(UserContext);
@@ -39,28 +45,31 @@ export default function NavBar({ setFilter, filter }) {
     };
   }, []);
 
-  // const toggleFilter = () => {
-  //   setFilter(filter ? false : true)
-  // }
-
   return (
     <nav className={navBar}>
-      <NavLink to="/" className="nav-link">
+      <NavLink to="/" className="navBar__navLink">
         {width === "mob" ? (
-          <img src={homeSymbol} alt="Home symbol" className="home-symbol" />
+          <img
+            src={homeSymbol}
+            alt="Home symbol"
+            className={navBar__homeSymbol}
+          />
         ) : null}
         <p>Home</p>
       </NavLink>
-      <NavLink to={`/users/${loggedInUser.username}`} className="nav-link">
+      <NavLink
+        to={`/users/${loggedInUser.username}`}
+        className="navBar__navLink"
+      >
         <img
           src={loggedInUser.avatar_url}
           alt={`${loggedInUser.username}'s avatar`}
-          className="avatar"
+          className={navBar__avatar}
         />
         <p>{width === "mob" ? `You` : loggedInUser.username}</p>
       </NavLink>
       {topicPage && width === "desktop" && (
-        <NavLink to={`/topics/${topicPage}`} className="nav-link">
+        <NavLink to={`/topics/${topicPage}`} className="navBar__navLink">
           <p>{topicPage}</p>
         </NavLink>
       )}
@@ -69,6 +78,7 @@ export default function NavBar({ setFilter, filter }) {
           onClick={() => {
             setFilter(!filter);
           }}
+          className={navBar__filterButton}
         >
           {filter ? `Hide` : `Show`} article filter options
         </button>

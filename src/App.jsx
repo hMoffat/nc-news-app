@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
 import { app } from "./app.module.css";
+import { useEffect, useState } from "react";
 import { Routes, Route, useSearchParams } from "react-router-dom";
-import NavBar from "./Components/NavBar";
+import NavBar from "./Components/NavBar/NavBar";
 import HomePage from "./Components/pages/HomePage";
 import ArticlePage from "./Components/pages/ArticlePage";
 import UserPage from "./Components/pages/UserPage";
-import UserContext from "./Components/UserContext";
+import UserContext from "./Components/Context/UserContext";
 import ErrorPage from "./Components/pages/ErrorPage";
 
 function App() {

@@ -1,4 +1,4 @@
-import UserContext from "../UserContext";
+import UserContext from "../Context/UserContext";
 import { useContext, useState } from "react";
 import { addComment } from "../../api/api";
 import "./AddComment.css";

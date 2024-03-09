@@ -1,5 +1,5 @@
 import { app__page } from "./page.module.css";
-import UserContext from "../UserContext";
+import UserContext from "../Context/UserContext";
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import UserCard from "../Cards/UserCard";
