@@ -1,4 +1,4 @@
-.app.layout {
+.app {
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
@@ -9,22 +9,22 @@
     "main"
     "nav";
 }
-.error-page {
+/* .error-page {
   height: 80vh;
-}
-.page {
+} */
+/* .app__page {
   overflow: auto;
   grid-area: main;
-}
+} */
 
-.nav-bar {
+/* .navBar {
   grid-area: nav;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   padding: 5px;
   background-color: var(--main-accent);
-}
+} */
 
 .nav-bar * {
   background-color: var(--main-accent);
@@ -51,6 +51,14 @@
 }
 
 @media (min-width: 480px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(90vh, auto);
+    grid-template-areas:
+      "nav"
+      "main";
+  }
+
   /* Currently some styles in filterManager that need to be moved as part of the refactor */
   .nav-link {
     flex-direction: row;

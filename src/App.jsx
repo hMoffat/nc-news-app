@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import { app } from "./app.module.css";
 import { Routes, Route, useSearchParams } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import HomePage from "./Components/pages/HomePage";
@@ -47,15 +47,14 @@ function App() {
   }, [sortQuery, orderQuery, isLoading]);
 
   return (
-    <div className="app layout">
+    <div className={app}>
       <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
-        <NavBar className="nav-bar" setFilter={setFilter} filter={filter} />
+        <NavBar setFilter={setFilter} filter={filter} />
         <Routes>
           <Route
             path="/"
             element={
               <HomePage
-                className="home-page page"
                 topics={topics}
                 setTopics={setTopics}
                 searchesDisabled={searchesDisabled}
@@ -67,13 +66,12 @@ function App() {
           />
           <Route
             path="/topics/:topic/:article_title"
-            element={<ArticlePage className="article-page page" />}
+            element={<ArticlePage />}
           />
           <Route
             path="/topics/:topic"
             element={
               <HomePage
-                className="topic-page page"
                 topics={topics}
                 setTopics={setTopics}
                 searchesDisabled={searchesDisabled}
@@ -83,10 +81,7 @@ function App() {
               />
             }
           />
-          <Route
-            path="/users/:username"
-            element={<UserPage className="user-page page" />}
-          />
+          <Route path="/users/:username" element={<UserPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </UserContext.Provider>

@@ -1,0 +1,8 @@
+.navBar {
+  grid-area: nav;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 5px;
+  background-color: var(--main-accent);
+}

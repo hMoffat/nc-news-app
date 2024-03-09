@@ -1,3 +1,4 @@
+import { app__page } from "./page.module.css";
 import { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { fetchArticleById, fetchCommentsByArticleId } from "../../api/api";
@@ -38,13 +39,12 @@ export default function ArticlePage() {
       <ErrorPage
         message={"This doesn't article doesn't exist..."}
         status={404}
-        className="error-page"
       />
     );
   }
 
   return (
-    <div className="article-page page layout">
+    <div className={app__page}>
       {articleIsLoading ? (
         <p className="article">Loading...</p>
       ) : (

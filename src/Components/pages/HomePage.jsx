@@ -1,3 +1,4 @@
+import { app__page } from "./page.module.css";
 import { useEffect } from "react";
 import ArticleManager from "../Managers/ArticleManager";
 import FilterManager from "../Managers/FilterManager/FilterManager";
@@ -17,7 +18,7 @@ export default function HomePage({
   const topicObjCopy = { ...topicObj };
 
   return (
-    <div className="home-page page layout">
+    <div className={app__page}>
       {filter && (
         <FilterManager
           className="filter"

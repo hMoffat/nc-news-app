@@ -67,13 +67,13 @@
 }
 
 @media (min-width: 480px) {
-  .app.layout {
+  /* .app.layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto minmax(90vh, auto);
     grid-template-areas:
       "nav"
       "main";
-  }
+  } */
 
   div.filter {
     font-size: smaller;

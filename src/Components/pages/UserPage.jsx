@@ -1,3 +1,4 @@
+import { app__page } from "./page.module.css";
 import UserContext from "../UserContext";
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -37,7 +38,7 @@ export default function UserPage() {
   }
 
   return (
-    <div className="user-page page layout">
+    <div className={app__page}>
       <div className="user-card">
         <UserCard
           user={username}
