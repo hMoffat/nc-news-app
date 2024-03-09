@@ -5,7 +5,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import HomePage from "./Components/pages/HomePage";
 import ArticlePage from "./Components/pages/ArticlePage";
 import UserPage from "./Components/pages/UserPage";
-import UserContext from "./Components/Context/UserContext";
+import UserContext from "./Context/UserContext";
 import ErrorPage from "./Components/pages/ErrorPage";
 
 function App() {

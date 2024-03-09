@@ -3,7 +3,7 @@ import DeleteComment from "../Buttons/DeleteComment";
 import "./CommentCard.css";
 import AddVote from "../Buttons/AddVote";
 import { useContext } from "react";
-import UserContext from "../Context/UserContext";
+import UserContext from "../../Context/UserContext";
 
 export default function CommentCard({
   comment,
