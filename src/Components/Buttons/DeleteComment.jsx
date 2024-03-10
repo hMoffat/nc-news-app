@@ -1,6 +1,6 @@
 import { deleteComment } from "../../api/api";
 import { useState } from "react";
-import "./Buttons.css";
+import "./deleteButton.css";
 
 export default function DeleteComment({ setComments, comment_id }) {
   const [isDisabled, setIsDisabled] = useState(false);
