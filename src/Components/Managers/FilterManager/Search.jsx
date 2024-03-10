@@ -1,5 +1,14 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useParams } from "react-router-dom";
+import {
+  filterSearch,
+  filterSearch__label,
+  searchOrder,
+  searchOrder__button,
+  searchSortBy,
+  searchSortBy__select,
+  searchSortBy__option,
+} from "./search.module.css";
 
 export default function Search({ searchesDisabled }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,9 +46,9 @@ export default function Search({ searchesDisabled }) {
   };
 
   return (
-    <div className="search">
-      <div className="search-order">
-        <label htmlFor="order">
+    <div className={filterSearch}>
+      <div className={searchOrder}>
+        <label htmlFor="order" className={filterSearch__label}>
           Sort order: {order === "asc" ? "Ascending" : "Descending"}
         </label>
         <button
@@ -48,28 +57,44 @@ export default function Search({ searchesDisabled }) {
           onClick={handleSearchOrderClick}
           value={order}
           disabled={searchesDisabled.order}
+          className={searchOrder__button}
         >
           {order === "asc" ? "Descending" : "Ascending"}
         </button>
       </div>
-      <div className="search-sort_by">
-        <label htmlFor="sort_by">Sort by...</label>
+      <div className={searchSortBy}>
+        <label htmlFor="sort_by" className={filterSearch__label}>
+          Sort by...
+        </label>
         <select
           id="sort_by"
           value={sort_by}
           onChange={handleSortOptionChange}
           disabled={searchesDisabled.selectSort}
+          className={searchSortBy__select}
         >
-          <option value="Select..." key="select">
+          <option
+            value="Select..."
+            key="select"
+            className={searchSortBy__option}
+          >
             Select...
           </option>
-          <option value="created_at" key="created_at">
+          <option
+            value="created_at"
+            key="created_at"
+            className={searchSortBy__option}
+          >
             Date
           </option>
-          <option value="comment_count" key="comment_count">
+          <option
+            value="comment_count"
+            key="comment_count"
+            className={searchSortBy__option}
+          >
             Number of Comments
           </option>
-          <option value="votes" key="votes">
+          <option value="votes" key="votes" className={searchSortBy__option}>
             Votes
           </option>
         </select>

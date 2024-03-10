@@ -47,16 +47,7 @@
   font-size: 1rem;
 }
 
-/* .articles img {
-  max-width: 90vw;
-  height: auto;
-}
-
-.articles a {
-  text-decoration: inherit;
-}
-
-
+/*
 .loading {
   position: absolute;
   top: 50%;
@@ -70,14 +61,7 @@
     grid-template-columns: auto 1fr;
     grid-template-areas: "filter articles";
   }
-
-  /*   
-  
-  .article-card .card-img {
-    max-width: 100%;
-  }
-  div.article-card {
+  .articles__topicHeader {
     width: 100%;
   }
- */
 }

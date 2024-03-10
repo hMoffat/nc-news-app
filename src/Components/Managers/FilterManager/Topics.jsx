@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchTopics } from "../../../api/api";
+import {
+  filterTopic,
+  filterTopic__label,
+  filterTopic__button,
+  filterTopic__select,
+  filterTopic__option,
+} from "./topic.module.css";
 
 export default function Topics({ topics, setTopics }) {
   const { topic } = useParams();
@@ -48,30 +55,39 @@ export default function Topics({ topics, setTopics }) {
   };
 
   return (
-    <div className="topic">
-      <form className="select-topic" onSubmit={handleTopicSubmit}>
-        <label htmlFor="topic-dropdown">Select a topic: </label>
-        <select
-          id="topic-dropdown"
-          defaultValue={topic}
-          onChange={handleSelect}
-        >
-          <option value="Select..." key="select">
-            Select...
-          </option>
-          {topics.map((aTopic) => {
-            return (
-              <option value={aTopic.slug} key={aTopic.slug}>
-                {aTopic.slug}
-              </option>
-            );
-          })}
-        </select>
-        <button type="submit" disabled={isDisabled}>
-          Go to topic
-        </button>
-        {selectReminder ? <p>You need to choose a topic</p> : null}
-      </form>
-    </div>
+    <form className={filterTopic} onSubmit={handleTopicSubmit}>
+      <label htmlFor="topic-dropdown" className={filterTopic__label}>
+        Select a topic:{" "}
+      </label>
+      <select
+        id="topic-dropdown"
+        defaultValue={topic}
+        onChange={handleSelect}
+        className={filterTopic__select}
+      >
+        <option value="Select..." key="select" className={filterTopic__option}>
+          Select...
+        </option>
+        {topics.map((aTopic) => {
+          return (
+            <option
+              value={aTopic.slug}
+              key={aTopic.slug}
+              className={filterTopic__option}
+            >
+              {aTopic.slug}
+            </option>
+          );
+        })}
+      </select>
+      <button
+        type="submit"
+        disabled={isDisabled}
+        className={filterTopic__button}
+      >
+        Go to topic
+      </button>
+      {selectReminder ? <p>You need to choose a topic</p> : null}
+    </form>
   );
 }
