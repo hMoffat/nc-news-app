@@ -1,0 +1,25 @@
+.articleManager {
+  list-style-type: none;
+}
+
+.articleManager li {
+  margin-bottom: 40px;
+  border-bottom: 2px var(--light-accent) solid;
+}
+
+@media (min-width: 480px) {
+  .articleManager {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: visible;
+    overflow-x: hidden;
+    width: 100%;
+    justify-content: start;
+  }
+  .articleManager li {
+    max-width: 400px;
+    min-width: 300px;
+    margin-bottom: 100px;
+    margin-right: 100px;
+  }
+}
