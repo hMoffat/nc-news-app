@@ -1,6 +1,11 @@
 import { shortStringDate } from "../../../Utils/utils";
 import DeleteComment from "../Buttons/DeleteComment";
-import "./CommentCard.css";
+import {
+  commentCard,
+  commentCard__header,
+  commentCard__body,
+  commentCard__footer,
+} from "./CommentCard.module.css";
 import AddVote from "../Buttons/AddVote";
 import { useContext } from "react";
 import UserContext from "../../Context/UserContext";
@@ -14,15 +19,15 @@ export default function CommentCard({
   const { loggedInUser } = useContext(UserContext);
 
   return (
-    <div className="comment-card">
-      <div className="card-header">
+    <div className={commentCard}>
+      <div className={commentCard__header}>
         {setArticleComments ? <p>{comment.author}</p> : null}
         <p>{date}</p>
       </div>
-      <div className="card-body">
+      <div className={commentCard__body}>
         <p>{comment.body}</p>
       </div>
-      <div className="comment card-footer">
+      <div className={commentCard__footer}>
         {setArticleComments ? (
           <AddVote
             currentVotes={comment.votes}

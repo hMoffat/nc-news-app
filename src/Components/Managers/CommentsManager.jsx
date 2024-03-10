@@ -1,8 +1,10 @@
-import { useParams } from "react-router-dom";
 import CommentCard from "../Cards/CommentCard";
-
-import { useEffect, useState } from "react";
-import { fetchUserComments } from "../../api/api";
+import {
+  commentsManager,
+  commentsManager__h3,
+  commentsManager__ul,
+  commentsManager__li,
+} from "./comments.module.css";
 
 export default function CommentsManager({
   articleComments,
@@ -13,12 +15,12 @@ export default function CommentsManager({
   const comments = articleComments ? articleComments : userPageComments;
 
   return (
-    <div className="comments">
-      <h3>Comments</h3>
-      <ul>
+    <div className={commentsManager}>
+      <h3 className={commentsManager__h3}>Comments</h3>
+      <ul className={commentsManager__ul}>
         {comments.map((comment) => {
           return (
-            <li key={comment.comment_id}>
+            <li key={comment.comment_id} className={commentsManager__li}>
               <CommentCard
                 comment={comment}
                 setArticleComments={setArticleComments}
