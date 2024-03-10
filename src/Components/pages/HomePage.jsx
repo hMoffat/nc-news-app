@@ -2,7 +2,7 @@ import { app__page } from "./page.module.css";
 import { useEffect } from "react";
 import ArticleManager from "../Managers/ArticleManager";
 import FilterManager from "../Managers/FilterManager/FilterManager";
-import "../pages/HomePage.css";
+import { homePage, homePage__articlesArea } from "../pages/HomePage.module.css";
 import { useParams } from "react-router-dom";
 
 export default function HomePage({
@@ -18,16 +18,15 @@ export default function HomePage({
   const topicObjCopy = { ...topicObj };
 
   return (
-    <div className={app__page}>
+    <div className={`${app__page} ${homePage}`}>
       {filter && (
         <FilterManager
-          className="filter"
           topics={topics}
           setTopics={setTopics}
           searchesDisabled={searchesDisabled}
         />
       )}
-      <div className="articles">
+      <div className={`${homePage__articlesArea}`}>
         {!topic ? null : !topicObj ? (
           <p>Loading {topic}...</p>
         ) : (
