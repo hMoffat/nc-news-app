@@ -1,4 +1,4 @@
-- refactor css system
+- refactor loading and error css
 - update state tree
 - style the loading behaviour bits
 

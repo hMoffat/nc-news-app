@@ -3,7 +3,10 @@ import ArticleCard from "../Cards/ArticleCard";
 import { fetchArticles } from "../../api/api";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import ErrorPage from "../pages/ErrorPage";
-import { articleManager } from "./ArticleManager.module.css";
+import {
+  articleManager,
+  articleManager__li,
+} from "./ArticleManager.module.css";
 
 export default function ArticleManager({ isLoading, setIsLoading }) {
   const [articles, setArticles] = useState([]);
@@ -63,7 +66,7 @@ export default function ArticleManager({ isLoading, setIsLoading }) {
         <ul className={articleManager}>
           {articles.map((article) => {
             return (
-              <li key={article.article_id}>
+              <li key={article.article_id} className={articleManager__li}>
                 <ArticleCard article={article} />
               </li>
             );

@@ -2,7 +2,7 @@
   list-style-type: none;
 }
 
-.articleManager li {
+.articleManager__li {
   margin-bottom: 40px;
   border-bottom: 2px var(--light-accent) solid;
 }
@@ -17,10 +17,8 @@
     justify-content: space-evenly;
     gap: 100px;
   }
-  .articleManager li {
+  .articleManager__li {
     max-width: 400px;
     min-width: 300px;
-    /* margin-bottom: 100px;
-    margin-right: 100px; */
   }
 }

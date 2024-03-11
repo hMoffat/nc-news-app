@@ -47,12 +47,6 @@
   font-size: 1rem;
 }
 
-/*
-.loading {
-  position: absolute;
-  top: 50%;
-  right: 50%;
-} */
 @media (min-width: 480px) {
   .homePage {
     height: auto;
