@@ -15,14 +15,12 @@ function App() {
     avatar_url:
       "https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729",
   });
-  const [topics, setTopics] = useState([]);
+
   const [searchesDisabled, setSearchesDisabled] = useState({
     selectSort: false,
     order: false,
   });
-  //  const [filter, setFilter] = useState(window.innerWidth > 480 ? false : true);
   const [filter, setFilter] = useState(true);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const sortQuery = searchParams.get("sort_by");
@@ -55,8 +53,6 @@ function App() {
             path="/"
             element={
               <HomePage
-                topics={topics}
-                setTopics={setTopics}
                 searchesDisabled={searchesDisabled}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
@@ -72,8 +68,6 @@ function App() {
             path="/topics/:topic"
             element={
               <HomePage
-                topics={topics}
-                setTopics={setTopics}
                 searchesDisabled={searchesDisabled}
                 setIsLoading={setIsLoading}
                 isLoading={isLoading}

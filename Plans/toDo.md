@@ -1,5 +1,5 @@
 - refactor loading and error css
-- update state tree
+- update state tree with loading and errors
 - style the loading behaviour bits
 
 - for user context, retrieve user from api instead of hardcoding

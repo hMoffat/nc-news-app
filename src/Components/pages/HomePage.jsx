@@ -1,5 +1,5 @@
 import { app__page } from "./page.module.css";
-import { useEffect } from "react";
+import { useState } from "react";
 import ArticleManager from "../Managers/ArticleManager";
 import FilterManager from "../Managers/FilterManager/FilterManager";
 import {
@@ -11,13 +11,12 @@ import {
 import { useParams } from "react-router-dom";
 
 export default function HomePage({
-  topics,
-  setTopics,
   searchesDisabled,
   isLoading,
   setIsLoading,
   filter,
 }) {
+  const [topics, setTopics] = useState([]);
   const { topic } = useParams();
   const topicObj = topics.find((aTopic) => aTopic.slug === topic);
   const topicObjCopy = { ...topicObj };
