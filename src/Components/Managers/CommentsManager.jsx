@@ -1,6 +1,8 @@
 import CommentCard from "../Cards/CommentCard";
 import {
   commentsManager,
+  article,
+  user,
   commentsManager__h3,
   commentsManager__ul,
   commentsManager__li,
@@ -15,7 +17,13 @@ export default function CommentsManager({
   const comments = articleComments ? articleComments : userPageComments;
 
   return (
-    <div className={commentsManager}>
+    <div
+      className={
+        articleComments
+          ? `${article} ${commentsManager}`
+          : `${user} ${commentsManager}`
+      }
+    >
       <h3 className={commentsManager__h3}>Comments</h3>
       <ul className={commentsManager__ul}>
         {comments.map((comment) => {

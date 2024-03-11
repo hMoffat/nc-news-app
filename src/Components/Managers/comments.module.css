@@ -2,7 +2,14 @@
   grid-area: comments;
   width: 85vw;
   justify-self: center;
+}
+
+.article.commentsManager {
   padding: 1rem;
+}
+
+.user.commentsManager {
+  padding: 1rem 0;
 }
 
 .commentsManager__h3 {
