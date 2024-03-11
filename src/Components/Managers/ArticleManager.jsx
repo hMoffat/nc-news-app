@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../Cards/ArticleCard";
 import { fetchArticles } from "../../api/api";
-import { useParams, useSearchParams, useNavigate } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import ErrorPage from "../pages/ErrorPage";
 import {
   articleManager,
@@ -15,7 +15,6 @@ export default function ArticleManager({ isLoading, setIsLoading }) {
   const sort_byQuery = searchParams.get("sort_by");
   const orderQuery = searchParams.get("order");
   const [err, setErr] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);

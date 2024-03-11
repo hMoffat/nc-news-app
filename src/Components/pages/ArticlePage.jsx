@@ -1,5 +1,5 @@
 import { app__page } from "./page.module.css";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { fetchArticleById, fetchCommentsByArticleId } from "../../api/api";
 import ArticleCard from "../Cards/ArticleCard";
