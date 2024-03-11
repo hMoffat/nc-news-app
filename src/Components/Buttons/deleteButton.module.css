@@ -1,0 +1,11 @@
+.deleteButton {
+  border-radius: 4px;
+  border: 1px solid var(--dark-shade);
+  padding: 6px 15px;
+  text-decoration: none;
+  background-color: white;
+  color: var(--dark-shade);
+  width: fit-content;
+  font-weight: 600;
+  margin-top: 1rem;
+}

@@ -1,0 +1,21 @@
+.app {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(auto, max-content);
+  grid-template-areas:
+    "main"
+    "nav";
+}
+
+@media (min-width: 480px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content minmax(90vh, auto);
+    grid-template-areas:
+      "nav"
+      "main";
+  }
+}

@@ -3,6 +3,10 @@ import ArticleCard from "../Cards/ArticleCard";
 import { fetchArticles } from "../../api/api";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import ErrorPage from "../pages/ErrorPage";
+import {
+  articleManager,
+  articleManager__li,
+} from "./ArticleManager.module.css";
 
 export default function ArticleManager({ isLoading, setIsLoading }) {
   const [articles, setArticles] = useState([]);
@@ -48,29 +52,26 @@ export default function ArticleManager({ isLoading, setIsLoading }) {
       <ErrorPage
         message={err.response.data.message}
         status={err.response.status}
-        className="error-page"
       />
     );
   }
 
   return (
     <>
-      {err ? (
-        <p className="error">Something went wrong...</p>
-      ) : isLoading ? (
-        <p className="loading">Loading...</p>
-      ) : (
-        <div className="just-articles">
-          <ul>
-            {articles.map((article) => {
-              return (
-                <li key={article.article_id}>
-                  <ArticleCard article={article} />
-                </li>
-              );
-            })}
-          </ul>
+      {isLoading ? (
+        <div className={articleManager}>
+          <p>Loading...</p>
         </div>
+      ) : (
+        <ul className={articleManager}>
+          {articles.map((article) => {
+            return (
+              <li key={article.article_id} className={articleManager__li}>
+                <ArticleCard article={article} />
+              </li>
+            );
+          })}
+        </ul>
       )}
     </>
   );

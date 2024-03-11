@@ -1,11 +1,11 @@
+import { app } from "./app.module.css";
 import { useEffect, useState } from "react";
-import "./App.css";
 import { Routes, Route, useSearchParams } from "react-router-dom";
-import NavBar from "./Components/NavBar";
+import NavBar from "./Components/NavBar/NavBar";
 import HomePage from "./Components/pages/HomePage";
 import ArticlePage from "./Components/pages/ArticlePage";
 import UserPage from "./Components/pages/UserPage";
-import UserContext from "./Components/UserContext";
+import UserContext from "./Context/UserContext";
 import ErrorPage from "./Components/pages/ErrorPage";
 
 function App() {
@@ -47,15 +47,14 @@ function App() {
   }, [sortQuery, orderQuery, isLoading]);
 
   return (
-    <div className="app layout">
+    <div className={app}>
       <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
-        <NavBar className="nav-bar" setFilter={setFilter} filter={filter} />
+        <NavBar setFilter={setFilter} filter={filter} />
         <Routes>
           <Route
             path="/"
             element={
               <HomePage
-                className="home-page page"
                 topics={topics}
                 setTopics={setTopics}
                 searchesDisabled={searchesDisabled}
@@ -67,13 +66,12 @@ function App() {
           />
           <Route
             path="/topics/:topic/:article_title"
-            element={<ArticlePage className="article-page page" />}
+            element={<ArticlePage />}
           />
           <Route
             path="/topics/:topic"
             element={
               <HomePage
-                className="topic-page page"
                 topics={topics}
                 setTopics={setTopics}
                 searchesDisabled={searchesDisabled}
@@ -83,10 +81,7 @@ function App() {
               />
             }
           />
-          <Route
-            path="/users/:username"
-            element={<UserPage className="user-page page" />}
-          />
+          <Route path="/users/:username" element={<UserPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </UserContext.Provider>

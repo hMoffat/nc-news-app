@@ -1,8 +1,9 @@
+import { app__page } from "./page.module.css";
 import { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { fetchArticleById, fetchCommentsByArticleId } from "../../api/api";
 import ArticleCard from "../Cards/ArticleCard";
-import "./ArticlePage.css";
+import { articlePage } from "./ArticlePage.module.css";
 import AddComment from "../Forms/AddComment";
 import CommentsManager from "../Managers/CommentsManager";
 import ErrorPage from "./ErrorPage";
@@ -38,13 +39,12 @@ export default function ArticlePage() {
       <ErrorPage
         message={"This doesn't article doesn't exist..."}
         status={404}
-        className="error-page"
       />
     );
   }
 
   return (
-    <div className="article-page page layout">
+    <div className={`${app__page} ${articlePage}`}>
       {articleIsLoading ? (
         <p className="article">Loading...</p>
       ) : (

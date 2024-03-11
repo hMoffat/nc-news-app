@@ -1,7 +1,13 @@
-import UserContext from "../UserContext";
+import UserContext from "../../Context/UserContext";
 import { useContext, useState } from "react";
 import { addComment } from "../../api/api";
-import "./AddComment.css";
+import {
+  commentAdd,
+  commentAdd__label,
+  commentAdd__textArea,
+  commentAdd__button,
+  commentAdd__form,
+} from "./AddComment.module.css";
 
 export default function AddComment({ setArticleComments, article_id }) {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
@@ -60,22 +66,29 @@ export default function AddComment({ setArticleComments, article_id }) {
   };
 
   return (
-    <div className="add-comment">
+    <div className={commentAdd}>
       {noBody && <p>You need to write a comment to post something...</p>}
       {err && !noBody ? (
         <p>Sorry, we couldn't post your comment... </p>
       ) : posting ? (
         <p>Posting your comment...</p>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="body">Add a Comment</label>
+        <form onSubmit={handleSubmit} className={commentAdd__form}>
+          <label htmlFor="body" className={commentAdd__label}>
+            Add a Comment
+          </label>
           <textarea
             value={commentInput.body}
             onChange={handleChange}
             rows={4}
             cols={40}
+            className={commentAdd__textArea}
           />
-          <button type="submit" disabled={isDisabled}>
+          <button
+            type="submit"
+            disabled={isDisabled}
+            className={commentAdd__button}
+          >
             Add comment
           </button>
         </form>

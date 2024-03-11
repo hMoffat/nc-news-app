@@ -1,0 +1,71 @@
+.filterTopic {
+  background-color: var(--light-accent);
+  width: 90vw;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+  border-bottom: solid 1px var(--light-shade);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.filterTopic * {
+  margin-right: 1em;
+}
+
+.filterTopic__label {
+  background-color: var(--light-accent);
+}
+
+.filterTopic__button {
+  padding: 5px 10px;
+  background-color: var(--main-accent);
+  border: solid 2px var(--main-accent);
+  border-radius: 5%;
+  color: var(--light-shade);
+  font-weight: 600;
+}
+
+.filterTopic__select {
+  padding: 5px 10px;
+  background-color: var(--light-shade);
+  border: solid 2px var(--main-accent);
+  border-radius: 5%;
+  color: var(--dark-shade);
+  font-weight: 600;
+}
+
+.filterTopic__option {
+  font-weight: 600;
+  background-color: var(--light-shade);
+}
+
+@media (min-width: 480px) {
+  .filterTopic {
+    border-bottom: 2px solid var(--light-shade);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: unset;
+    width: 100%;
+  }
+
+  .filterTopic * {
+    margin-right: 0;
+  }
+
+  .filterTopic__label {
+    margin-bottom: 0.5rem;
+  }
+
+  .filterTopic__select {
+    margin-bottom: 1rem;
+    padding: 0;
+  }
+
+  .filterTopic__button {
+    margin-bottom: 1rem;
+  }
+}

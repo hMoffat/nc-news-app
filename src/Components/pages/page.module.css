@@ -1,0 +1,4 @@
+.app__page {
+  overflow: auto;
+  grid-area: main;
+}

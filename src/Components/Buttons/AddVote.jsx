@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { addVotesByArticleId, addVotesByCommentId } from "../../api/api";
-import "./Buttons.css";
+import {
+  addVote,
+  addVote__svg,
+  addVote__true,
+  addVote__false,
+} from "./addVote.module.css";
+import { voteAdd } from "../Cards/ArticleCard.module.css";
 import { SlLike, SlDislike } from "react-icons/sl";
 
 export default function AddArticleVote({
@@ -42,7 +48,7 @@ export default function AddArticleVote({
     }
   };
   return (
-    <div className="add-vote">
+    <div className={`${addVote} ${voteAdd}`}>
       <p>{votes}</p>
 
       <button
@@ -51,9 +57,9 @@ export default function AddArticleVote({
         }}
         disabled={isDisabled}
         aria-label="Like"
-        className={isDisabled ? "true" : "false"}
+        className={isDisabled ? addVote__true : addVote__false}
       >
-        <SlLike className="add-vote-svg dislike" />
+        <SlLike className={addVote__svg} />
       </button>
       <button
         onClick={() => {
@@ -61,9 +67,9 @@ export default function AddArticleVote({
         }}
         disabled={isDisabled}
         aria-label="Dislike"
-        className={isDisabled ? "true" : "false"}
+        className={isDisabled ? addVote__true : addVote__false}
       >
-        <SlDislike className="add-vote-svg dislike" />
+        <SlDislike className={addVote__svg} />
       </button>
       {serverErr ? <p>Sorry, something went wrong!</p> : null}
     </div>

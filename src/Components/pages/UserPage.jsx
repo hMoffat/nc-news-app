@@ -1,9 +1,10 @@
-import UserContext from "../UserContext";
+import { app__page } from "./page.module.css";
+import UserContext from "../../Context/UserContext";
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import UserCard from "../Cards/UserCard";
 import CommentsManager from "../Managers/CommentsManager";
-import "./UserPage.css";
+import { userPage } from "./UserPage.module.css";
 import { fetchUserByUsername, fetchUserComments } from "../../api/api";
 import ErrorPage from "./ErrorPage";
 
@@ -37,24 +38,20 @@ export default function UserPage() {
   }
 
   return (
-    <div className="user-page page layout">
-      <div className="user-card">
-        <UserCard
-          user={username}
-          avatar={displayedUser.avatar_url}
-          name={displayedUser.name}
+    <div className={`${app__page} ${userPage}`}>
+      <UserCard
+        user={username}
+        avatar={displayedUser.avatar_url}
+        name={displayedUser.name}
+      />
+      {commentsAreLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <CommentsManager
+          userPageComments={userPageComments}
+          setUserPageComments={setUserPageComments}
         />
-      </div>
-      <>
-        {commentsAreLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <CommentsManager
-            userPageComments={userPageComments}
-            setUserPageComments={setUserPageComments}
-          />
-        )}
-      </>
+      )}
     </div>
   );
 }

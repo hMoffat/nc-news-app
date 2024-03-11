@@ -1,0 +1,16 @@
+.userCard {
+  grid-area: user;
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  padding: 2rem 0;
+  justify-self: center;
+  height: 400px;
+  justify-content: space-around;
+}
+
+.userCard__img {
+  border-radius: 50%;
+  max-height: 50%;
+  width: fit-content;
+}

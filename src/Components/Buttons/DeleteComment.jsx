@@ -1,6 +1,6 @@
 import { deleteComment } from "../../api/api";
 import { useState } from "react";
-import "./Buttons.css";
+import { deleteButton } from "./deleteButton.module.css";
 
 export default function DeleteComment({ setComments, comment_id }) {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -27,11 +27,19 @@ export default function DeleteComment({ setComments, comment_id }) {
   return (
     <>
       {deleteing ? (
-        <button onClick={handleDelete} disabled={isDisabled} className="delete">
+        <button
+          onClick={handleDelete}
+          disabled={isDisabled}
+          className={deleteButton}
+        >
           Deleteing...
         </button>
       ) : (
-        <button onClick={handleDelete} disabled={isDisabled} className="delete">
+        <button
+          onClick={handleDelete}
+          disabled={isDisabled}
+          className={deleteButton}
+        >
           Delete Comment
         </button>
       )}

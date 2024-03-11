@@ -1,0 +1,39 @@
+.commentsManager {
+  grid-area: comments;
+  width: 85vw;
+  justify-self: center;
+}
+
+.article.commentsManager {
+  padding: 1rem;
+}
+
+.user.commentsManager {
+  padding: 1rem 0;
+}
+
+.commentsManager__h3 {
+  margin-bottom: 30px;
+}
+
+.commentsManager__ul {
+  display: flex;
+  flex-direction: column-reverse;
+  list-style-type: none;
+}
+.commentsManager__li {
+  margin-bottom: 40px;
+  border-bottom: 2px var(--light-accent) solid;
+}
+
+@media (min-width: 480px) {
+  .commentsManager__ul {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .commentsManager__li {
+    max-width: 100%;
+  }
+}

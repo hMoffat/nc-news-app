@@ -1,4 +1,4 @@
-.comment-card {
+.commentCard {
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: 1fr;
@@ -10,15 +10,19 @@
     "footer";
 }
 
-.card-header {
+.commentCard__header {
   grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  align-items: center;
 }
 
-.card-body {
+.commentCard__body {
   grid-area: body;
 }
 
-.comment.card-footer {
+.commentCard__footer {
   grid-area: footer;
   grid-row-end: auto;
   display: flex;
