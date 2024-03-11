@@ -1,0 +1,14 @@
+.articlePage {
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+    "article"
+    "add-comment"
+    "comments";
+  margin-top: 20px;
+}
+
+@media (min-width: 480px) {
+}

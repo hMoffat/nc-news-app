@@ -6,6 +6,7 @@ import {
   addVote__true,
   addVote__false,
 } from "./addVote.module.css";
+import { voteAdd } from "../Cards/ArticleCard.module.css";
 import { SlLike, SlDislike } from "react-icons/sl";
 
 export default function AddArticleVote({
@@ -47,7 +48,7 @@ export default function AddArticleVote({
     }
   };
   return (
-    <div className={addVote}>
+    <div className={`${addVote} ${voteAdd}`}>
       <p>{votes}</p>
 
       <button
