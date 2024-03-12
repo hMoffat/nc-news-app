@@ -2,6 +2,13 @@
   list-style-type: none;
 }
 
+.articleManager__loading {
+  padding-top: 50%;
+  margin: auto;
+  font-size: larger;
+  font-weight: 600;
+}
+
 .articleManager__li {
   margin-bottom: 40px;
   border-bottom: 2px var(--light-accent) solid;
@@ -20,5 +27,9 @@
   .articleManager__li {
     max-width: 400px;
     min-width: 300px;
+  }
+  .articleManager__loading {
+    padding-top: 30%;
+    font-size: x-large;
   }
 }

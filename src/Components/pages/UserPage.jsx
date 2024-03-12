@@ -4,7 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import UserCard from "../Cards/UserCard";
 import CommentsManager from "../Managers/CommentsManager";
-import { userPage } from "./UserPage.module.css";
+import { userPage, userPage__loading } from "./UserPage.module.css";
 import { fetchUserByUsername, fetchUserComments } from "../../api/api";
 import ErrorPage from "./ErrorPage";
 
@@ -18,6 +18,8 @@ export default function UserPage() {
   const [err, setErr] = useState(null);
 
   useEffect(() => {
+    setDisplayedUser(null);
+    setCommentsAreLoading(true);
     fetchUserByUsername(username)
       .then((results) => {
         setDisplayedUser({ ...results.data.user });
@@ -39,13 +41,17 @@ export default function UserPage() {
 
   return (
     <div className={`${app__page} ${userPage}`}>
-      <UserCard
-        user={username}
-        avatar={displayedUser.avatar_url}
-        name={displayedUser.name}
-      />
+      {!displayedUser ? (
+        <p className={userPage__loading}>Loading user...</p>
+      ) : (
+        <UserCard
+          user={username}
+          avatar={displayedUser.avatar_url}
+          name={displayedUser.name}
+        />
+      )}
       {commentsAreLoading ? (
-        <p>Loading...</p>
+        <p className={userPage__loading}>Loading user comments...</p>
       ) : (
         <CommentsManager
           userPageComments={userPageComments}

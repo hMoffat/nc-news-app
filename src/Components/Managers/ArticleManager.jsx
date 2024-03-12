@@ -6,6 +6,7 @@ import ErrorPage from "../pages/ErrorPage";
 import {
   articleManager,
   articleManager__li,
+  articleManager__loading,
 } from "./ArticleManager.module.css";
 
 export default function ArticleManager({ isLoading, setIsLoading }) {
@@ -59,7 +60,7 @@ export default function ArticleManager({ isLoading, setIsLoading }) {
     <>
       {isLoading ? (
         <div className={articleManager}>
-          <p>Loading...</p>
+          <p className={articleManager__loading}>Loading...</p>
         </div>
       ) : (
         <ul className={articleManager}>

@@ -10,5 +10,16 @@
   margin-top: 20px;
 }
 
+.articlePage__loading {
+  padding-top: 50%;
+  margin: auto;
+  font-size: larger;
+  font-weight: 600;
+}
+
 @media (min-width: 480px) {
+  .articlePage__loading {
+    padding-top: 30%;
+    font-size: x-large;
+  }
 }
