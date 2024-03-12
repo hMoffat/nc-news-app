@@ -8,3 +8,15 @@
     "comments";
   margin-top: 20px;
 }
+
+.userPage__loading {
+  margin: auto;
+  font-size: larger;
+  font-weight: 600;
+}
+
+@media (min-width: 480px) {
+  .userPage__loading {
+    font-size: x-large;
+  }
+}

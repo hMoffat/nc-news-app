@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { fetchArticleById, fetchCommentsByArticleId } from "../../api/api";
 import ArticleCard from "../Cards/ArticleCard";
-import { articlePage } from "./ArticlePage.module.css";
+import { articlePage, articlePage__loading } from "./ArticlePage.module.css";
 import AddComment from "../Forms/AddComment";
 import CommentsManager from "../Managers/CommentsManager";
 import ErrorPage from "./ErrorPage";
@@ -46,12 +46,12 @@ export default function ArticlePage() {
   return (
     <div className={`${app__page} ${articlePage}`}>
       {articleIsLoading ? (
-        <p className="article">Loading...</p>
+        <p className={articlePage__loading}>Loading article...</p>
       ) : (
         <>
           <ArticleCard article={article} />
           {commentsAreLoading ? (
-            <p>Loading...</p>
+            <p className={articlePage__loading}>Loading comments...</p>
           ) : (
             <>
               <AddComment
