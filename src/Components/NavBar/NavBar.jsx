@@ -17,6 +17,7 @@ export default function NavBar({ setFilter, filter }) {
   const [width, setWidth] = useState(
     window.innerWidth > 480 ? "desktop" : "mob"
   );
+  const [userPage, setUserPage] = useState(false);
 
   useEffect(() => {
     if (location.pathname.includes("topics")) {
@@ -26,6 +27,12 @@ export default function NavBar({ setFilter, filter }) {
       console.log(topicPage);
     } else {
       setTopicPage(null);
+    }
+
+    if (location.pathname.includes("users")) {
+      setUserPage(true);
+    } else {
+      setUserPage(false);
     }
   }, [location]);
 
@@ -73,7 +80,7 @@ export default function NavBar({ setFilter, filter }) {
           <p>{topicPage}</p>
         </NavLink>
       )}
-      {width === "desktop" && (
+      {width === "desktop" && !userPage && (
         <button
           onClick={() => {
             setFilter(!filter);
